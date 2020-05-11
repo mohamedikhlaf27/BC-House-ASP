@@ -1,0 +1,154 @@
+﻿
+@{
+    ViewData["Title"] = "Register";
+}
+@{
+    Layout = null;
+
+}
+
+@model BC_House_ASP.Models.Klant
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Registeren</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    @*<link rel="stylesheet" href="~/css/site.css" />*@
+    <link rel="stylesheet" href=~/css/Register.css type="text/css" media="screen" />
+</head>
+<body>
+    <header class=" mt-5"></header>
+    <div class="container h-100">
+        <form class="form-horizontal" role="form" form asp-controller="Klant" asp-action="Register" method="post">
+            <div class="d-flex justify-content-center">
+                <h1>Registeren</h1>
+            </div>
+
+            <!-- logo-->
+            <div class="d-flex justify-content-center">
+                <div class="brand_logo_container">
+                    <img src="~/img/BC-House logo.png" class="brand_logo" alt="Logo">
+                </div>
+            </div>
+
+            <!-- melding-->
+            <div class="d-flex justify-content-center">
+                @Html.ValidationMessageFor(Model => Model.klantNaam, "", new { @class = "text-danger" })
+                @Html.ValidationMessageFor(Model => Model.klantPassword, "", new { @class = "text -danger" })
+                @Html.ValidationMessageFor(Model => Model.klantEmail, "", new { @class = "text-danger" })
+                @Html.ValidationMessageFor(Model => Model.telefoonNummer, "", new { @class = "text-danger" })
+                @Html.ValidationMessageFor(Model => Model.straat, "", new { @class = "text-danger" })
+                @Html.ValidationMessageFor(Model => Model.postcode, "", new { @class = "text-danger" })
+                @Html.ValidationMessageFor(Model => Model.woonplaats, "", new { @class = "text-danger" })
+
+            </div>
+            <div class="form_container">
+                <!-- input naam-->
+                <p><label asp-for="klantNaam"></label></p>
+                <div class="input-group mb-3">
+                    <div class="input-group-append">
+                        <span class="input-group-text">
+                            <img src="~/img/UserIcon.png">
+                            @* <i class="fas fa-user"></i>*@
+                        </span>
+                    </div>
+                    <input asp-for="klantNaam" name="klantNaam" class="form-control input_name" id="InputNaam">
+                </div>
+                <!-- input email-->
+                <p><label asp-for="klantEmail"></label></p>
+                <div class="input-group mb-3">
+                    <div class="input-group-append">
+                        <span class="input-group-text">
+                            <img src="~/img/email.png">
+                            @* <i class="fas fa-user"></i>*@
+                        </span>
+                    </div>
+                    <input asp-for="klantEmail" name="klantEmail" class="form-control input_email" id="InputEmail">
+                </div>
+                <!-- input wachtwoord-->
+                <p><label asp-for="klantPassword"></label></p>
+                <div class="input-group mb-2">
+                    <div class="input-group-append">
+                        <span class="input-group-text">
+                            <img src="~/img/PasswordIcon.png">
+                            <i class="fas fa-user"></i>
+                        </span>
+                    </div>
+                    <input asp-for="klantPassword" name="klantPassword" class="form-control input_pass" id="InputPassword">
+                </div>
+                <!-- input telefoonnr-->
+                <p><label asp-for="telefoonNummer"></label></p>
+                <div class="input-group mb-2">
+                    <div class="input-group-append">
+                        <span class="input-group-text">
+                            <img src="~/img/phone-icon.png">
+                            <i class="fas fa-user"></i>
+                        </span>
+                    </div>
+                    <input asp-for="telefoonNummer" name="telefoonNummer" class="form-control input_PhoneNR" id="telefoonNummer">
+                </div>
+                <!-- input Straat-->
+                <p><label asp-for="straat"></label></p>
+                <div class="input-group mb-2">
+                    <div class="input-group-append">
+                        <span class="input-group-text">
+                            <img src="~/img/Street.png">
+                            <i class="fas fa-user"></i>
+                        </span>
+                    </div>
+                    <input asp-for="straat" name="straat" class="form-control input_street" id="straat">
+                </div>
+                <!-- input huisnummer-->
+                <p><label asp-for="huisNummer"></label></p>
+                <div class="input-group mb-2">
+                    <div class="input-group-append">
+                        <span class="input-group-text">
+                            <img src="~/img/House nr.png">
+                            <i class="fas fa-user"></i>
+                        </span>
+                    </div>
+                    <input asp-for="huisNummer" name="huisNummer" class="form-control input_HouseNR" id="huisNummer">
+                </div>
+                <!-- input postcode-->
+                <p><label asp-for="postcode"></label></p>
+                <div class="input-group mb-2">
+                    <div class="input-group-append">
+                        <span class="input-group-text">
+                            <img src="~/img/Postalcode.png">
+                            <i class="fas fa-user"></i>
+                        </span>
+                    </div>
+                    <input asp-for="postcode" name="postcode" class="form-control input_Postalcode" id="postcode">
+                </div>
+                <!-- input woonplaats-->
+                <p><label asp-for="woonplaats"></label></p>
+                <div class="input-group mb-2">
+                    <div class="input-group-append">
+                        <span class="input-group-text">
+                            <img src="~/img/woonplaats.png">
+                            <i class="fas fa-user"></i>
+                        </span>
+                    </div>
+                    <input asp-for="woonplaats" name="woonplaats" class="form-control input_Residence" id="woonplaats">
+                </div>
+
+                <!-- registereer button-->
+                <div class="d-flex justify-content-center mt-3 login_container">
+                    <button type="submit" class="btn Registeren_btn">Registeren</button>
+                </div>
+            </div>
+        </form> <!-- /form -->
+    </div> <!-- ./container -->
+
+    <footer class=" mb-5"></footer>
+    <!-- Script-->
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+</body>
+</html>

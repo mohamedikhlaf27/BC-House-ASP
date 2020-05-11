@@ -1,0 +1,94 @@
+﻿@{
+    ViewData["Title"] = "Login";
+}
+
+@model BC_House_ASP.Models.Klant
+
+@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Login</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href=~/css/Login.css type="text/css" media="screen" />
+</head>
+<body>
+    <header class="mt-5"></header>
+        <div class="container">
+            <div class="d-flex justify-content-center">
+                <div>
+                    <div class="d-flex justify-content-center">
+                        <h1>Login</h1>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <div class="brand_logo_container">
+                            <img src="~/img/BC-House logo.png" class="brand_logo" alt="Logo">
+                        </div>
+                    </div>
+
+                    <div class="d-flex justify-content-center">
+                        @Html.ValidationMessageFor(model => model.klantEmail, "", new { @class = "text-danger" })
+                        @Html.ValidationMessageFor(model => model.klantPassword, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="d-flex justify-content-center form_container">
+                        <form asp-controller="Klant" asp-action="Login" method="post">
+                            <p><label asp-for="klantEmail"></label></p>
+                            <div class="input-group mb-3">
+                                <div class="input-group-append">
+                                    <span class="input-group-text">
+                                        <img src="~/img/UserIcon.png">
+                                        <i class="fas fa-user"></i>
+                                    </span>
+                                </div>
+                                <input asp-for="klantEmail" name="klantEmail" class="form-control input_user" id="InputEmail">
+                            </div>
+                            <p><label asp-for="klantPassword"></label></p>
+                            <div class="input-group mb-2">
+                                <div class="input-group-append">
+                                    <span class="input-group-text">
+                                        <img src="~/img/PasswordIcon.png">
+                                        <i class="fas fa-user"></i>
+                                    </span>
+                                </div>
+                                <input asp-for="klantPassword" name="klantPassword" class="form-control input_pass" id="InputPassword">
+                            </div>
+                            <div class="form-group">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customControlInline">
+                                        <label class="custom-control-label" for="customControlInline">Remember me</label>
+                                    </div>
+                                </div>
+                            <div class="d-flex justify-content-center mt-3 login_container">
+                                <button type="submit" class="btn login_btn">Login</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="mt-4">
+                        <div class="d-flex justify-content-center links">
+                            Nog geen account?  <a class="ml-2" asp-controller="Klant" asp-action="Register">Registreer. </a>
+                        </div>
+                        <div class="d-flex justify-content-center links">
+                            <a href="#">Forgot your password?</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class=" mb-5"></footer>
+
+    <!-- Script-->
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+</body>
+</html>

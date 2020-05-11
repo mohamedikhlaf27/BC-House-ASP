@@ -1,0 +1,77 @@
+﻿body {
+    background:fixed;
+    background-size: cover;
+}
+
+*[role="form"] {
+    max-width: 500px;
+    padding: 15px;
+    margin: 0 auto;
+    border-radius: 0.3em;
+    text-align: left;
+    background-color: #f2f2f2;
+}
+
+    *[role="form"] h1 {
+        font-size: 30px;
+    }
+
+.brand_logo_container {
+    height: 150px;
+    width: 295px;
+    text-align: center;
+}
+
+.brand_logo {
+    height: 150px;
+    width: 250px;
+}
+
+.form_container {
+    margin-top: 20px;
+    width: 250px;
+    margin-left: 25%;
+}
+
+
+.input-group-text {
+    background: #c0392b !important;
+    color: white !important;
+    border: 0 !important;
+    border-radius: 0.25rem 0 0 0.25rem !important;
+    height: 38px;
+    width: 38px;
+}
+    .input-group-text img {
+        width: 100%;
+        height: auto;
+    }
+
+.input_user,
+.input_pass:focus {
+    box-shadow: none !important;
+    outline: 0px !important;
+}
+
+.Registeren_btn {
+    width: 100%;
+    background: #c0392b !important;
+    color: black !important;
+}
+
+    .Registeren_btn:focus {
+        box-shadow: none !important;
+        outline: 0px !important;
+    }
+
+.input_email,
+.input_name,
+.input_PhoneNR,
+.input_street,
+.input_HouseNR,
+.input_Postalcode,
+.input_Residence,
+.input_pass:focus {
+    box-shadow: none !important;
+    outline: 0px !important;
+}
