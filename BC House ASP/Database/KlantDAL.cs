@@ -63,7 +63,7 @@ namespace BC_House_ASP.Database
         }
 
         // register - gegevens in de databse toevoegen.
-        public void AddKlant(string klantNaam, string klantEmail, int telefoonNummer, string klantPassword, string postcode, string huisNummer, string straat, string woonplaats)
+        public void AddKlant(string klantNaam, string klantEmail, string telefoonNummer, string klantPassword, string postcode, string huisNummer, string straat, string woonplaats)
         {
             cmd = new SqlCommand(@"INSERT INTO Customer(Name, Email, [Phone nr], Password, [Postal code], [House nr], Street, Residence) 
                                    VALUES (@inputName, @inputEmail, @inputPhone, @inputPassword, @inputPostal, @inputHouseNR, @inputStreet, @inputResidence)", GetCon());

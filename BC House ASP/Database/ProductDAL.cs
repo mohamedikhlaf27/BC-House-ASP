@@ -13,7 +13,7 @@ namespace BC_House_ASP.Database
     {
         IProductDAL productDAL;
 
-        public void GetBeefBurgers()
+        public void FilterBeefBurgers()
         {
             cmd = new SqlCommand("Select * from Product Where tag = 'Beefburgers'", GetCon());
             OpenConnectionToDB();
@@ -29,7 +29,7 @@ namespace BC_House_ASP.Database
             SaveProductsInList();
         }
 
-        public void GetDrinks()
+        public void FilterDrinks()
         {
             cmd = new SqlCommand("Select * from Product Where tag = 'Drinks'", GetCon());
             OpenConnectionToDB();

@@ -11,6 +11,7 @@ namespace BC_House_ASP.Container
     {
         /// <summary>
         /// container van de klant 
+        /// fdafasfasdfasfasf
         /// </summary>
 
         IKlantDAL klantDAL;
@@ -39,7 +40,7 @@ namespace BC_House_ASP.Container
         }
 
         // methodes voor registeren
-        public void Accountmaken(string klantNaam, string klantEmail, int telefoonNummer, string klantPassword, string postcode, string huisNummer, string straat, string woonplaats)
+        public void Accountmaken(string klantNaam, string klantEmail, string telefoonNummer, string klantPassword, string postcode, string huisNummer, string straat, string woonplaats)
         {
             klantDAL.AddKlant(klantNaam, klantEmail, telefoonNummer, klantPassword, postcode, huisNummer, straat, woonplaats);
         }

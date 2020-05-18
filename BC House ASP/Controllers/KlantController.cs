@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using BC_House_ASP.Container;
+using BC_House_ASP.Database;
 using BC_House_ASP.Interface;
 using BC_House_ASP.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -16,7 +17,7 @@ namespace BC_House_ASP.Controllers
 
         public KlantController()
         {
-            //this.klantDAL = klantdal;
+            this.klantDAL = new KlantDAL();
             klantContainer = new KlantContainer(klantDAL);
         }
 
@@ -26,7 +27,7 @@ namespace BC_House_ASP.Controllers
         }
         public IActionResult Home()
         {
-            return View();
+            return View("../Home/Index");
         }
         public IActionResult Register()
         {
@@ -34,18 +35,18 @@ namespace BC_House_ASP.Controllers
         }
 
         [HttpPost]
-        public IActionResult Login(Klant klant)
+        public ActionResult Login(Klant klant)
         {
             if (klant.klantEmail == null)
             {
                 ////Show error
-                //ModelState.AddModelError("Email", "Vul je email in!");
+                //ModelState.AddModelError("klantEmail", "Vul je email in!");
                 return View("Login");
             }
             else if (klant.klantPassword == null)
             {
                 ////Show error
-                //ModelState.AddModelError("Password", "Vul je wachtwoord in!");
+                //ModelState.AddModelError("klantPassword", "Vul je wachtwoord in!");
                 return View("Login");
             }
             else if (klantContainer.CheckIfUserExists(klant.klantEmail, klant.klantPassword))
@@ -56,24 +57,29 @@ namespace BC_House_ASP.Controllers
             else
             {
                 ////Show wrong password error
-                //ModelState.AddModelError("Password", "Wrong password or email");
+                ModelState.AddModelError("klantEmail", "Fout wachtwoord of email.");
                 return View("Login");
             }
         }
         [HttpPost]
-        public IActionResult Register(Klant klant)
+        public ActionResult Register(Klant klant)
         {
-            if (klant.klantNaam == "" || klant.klantEmail == "" || Convert.ToString(klant.telefoonNummer) == "" || klant.klantPassword == "" || klant.postcode == "" || klant.huisNummer == "" || klant.straat == "" || klant.woonplaats == "")
+            if (klant.klantNaam == null || klant.klantEmail == null || klant.telefoonNummer == null || klant.klantPassword == null || klant.postcode == null || klant.huisNummer == null || klant.straat == null || klant.woonplaats == null)
             {
-                ModelState.AddModelError("Password", "Vul alle gegevens in!");
-                if (klantContainer.registerCheck(klant.klantEmail, klant.klantPassword, Convert.ToString(klant.telefoonNummer), klant.postcode))
-                {
-
-                    klantContainer.Accountmaken(klant.klantNaam, klant.klantEmail, klant.telefoonNummer, klant.klantPassword, klant.postcode, klant.huisNummer, klant.straat, klant.woonplaats);
-                    return RedirectToAction("Login");
-                }
+                ModelState.AddModelError("klantEmail", "Vul alle gegevens in!");
+                return View("Register");
             }
-            return View("Register");
+            else if (klantContainer.registerCheck(klant.klantEmail, klant.klantPassword, klant.telefoonNummer, klant.postcode))
+            {
+                klantContainer.Accountmaken(klant.klantNaam, klant.klantEmail, klant.telefoonNummer, klant.klantPassword, klant.postcode, klant.huisNummer, klant.straat, klant.woonplaats);
+                return RedirectToAction("Login");
+            }
+            else
+            {
+                ////Show wrong password error
+                ModelState.AddModelError("klantEmail", "Vul geldige gegevens in!.");
+                return View("Register");
+            }
         }
 
         public ActionResult Logout()

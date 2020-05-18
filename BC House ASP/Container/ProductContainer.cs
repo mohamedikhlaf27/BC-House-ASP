@@ -29,14 +29,14 @@ namespace BC_House_ASP.Container
             productslist.Clear();
         }
 
-        public void BeefBurgersGet()
+        public void BeefBurgers()
         {
-            productDAL.GetBeefBurgers();
+            productDAL.FilterBeefBurgers();
         }
 
-        public void DrinksGet()
+        public void Drinks()
         {
-            productDAL.GetDrinks();
+            productDAL.FilterDrinks();
         }
     }
 }

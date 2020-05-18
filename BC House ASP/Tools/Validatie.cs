@@ -34,6 +34,7 @@ namespace BC_House_ASP.Tools
         public bool ValidatieTelefoonNR(string telefoonnummer)
         {
             return Regex.IsMatch(telefoonnummer, @"^((\+|00(\s|\s?\-\s?)?)31(\s|\s?\-\s?)?(\(0\)[\-\s]?)?|0)[1-9]((\s|\s?\-\s?)?[0-9])((\s|\s?-\s?)?[0-9])((\s|\s?-\s?)?[0-9])\s?[0-9]\s?[0-9]\s?[0-9]\s?[0-9]\s?[0-9]$");
+            
         }
 
         // validatie voor nederlandse postcodes

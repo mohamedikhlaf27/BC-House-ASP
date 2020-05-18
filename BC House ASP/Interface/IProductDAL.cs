@@ -7,9 +7,9 @@ namespace BC_House_ASP.Interface
 {
     public interface IProductDAL
     {
-        void GetBeefBurgers();
+        void FilterBeefBurgers();
 
-        void GetDrinks();
+        void FilterDrinks();
 
         void SaveProductsInList();
     }

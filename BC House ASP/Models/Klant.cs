@@ -14,25 +14,27 @@ namespace BC_House_ASP.Models
 
         [Required]
         [DataType(DataType.Password)]
+        [Key]
         [Display(Name = "Wachtwoord")]
         public string klantPassword { get; set; }
 
         [Required]
         [EmailAddress]
+        [Key]
         [Display(Name = "Email")]
         public string klantEmail { get; set; }
 
         [Required]
         [DataType(DataType.PhoneNumber)]
-        [Display(Name = "Telefoon nummer")]
-        public int telefoonNummer { get; set; }
+        [Display(Name = "Telefoonnummer")]
+        public string telefoonNummer { get; set; }
 
         [Required]
         [Display(Name = "Straat")]
         public string straat { get; set; }
 
         [Required]
-        [Display(Name = "Huis nummer")]
+        [Display(Name = "Huisnummer")]
         public string huisNummer { get; set; }
 
         [Required]
