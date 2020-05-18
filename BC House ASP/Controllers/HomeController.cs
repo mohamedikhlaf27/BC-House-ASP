@@ -31,13 +31,15 @@ namespace BC_House_ASP.Controllers
             return View();
         }
 
-        [HttpPost]
+        [HttpGet]
         public ActionResult DisplayProducts()
         {
-            productContainer.BeefBurgers();
+            productContainer.ClearList();
+            productContainer.AllProducts();
             List<Product> productslist = productContainer.GetList();
 
             return PartialView("../Partials/_productDisplay", productslist);
+
         }
 
         //[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

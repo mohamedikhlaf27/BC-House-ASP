@@ -38,5 +38,10 @@ namespace BC_House_ASP.Container
         {
             productDAL.FilterDrinks();
         }
+
+        public void AllProducts()
+        {
+            productDAL.AllProducts();
+        }
     }
 }

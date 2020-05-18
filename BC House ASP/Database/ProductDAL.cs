@@ -13,6 +13,22 @@ namespace BC_House_ASP.Database
     {
         IProductDAL productDAL;
 
+        public void AllProducts()
+        {
+            cmd = new SqlCommand("Select * from Product", GetCon());
+            OpenConnectionToDB();
+
+            SqlDataAdapter adapt = new SqlDataAdapter(cmd);
+            AddTable();
+            adapt.Fill(table);
+
+            CloseConnectionToDB();
+
+            cmd = new SqlCommand();
+
+            SaveProductsInList();
+        }
+
         public void FilterBeefBurgers()
         {
             cmd = new SqlCommand("Select * from Product Where tag = 'Beefburgers'", GetCon());

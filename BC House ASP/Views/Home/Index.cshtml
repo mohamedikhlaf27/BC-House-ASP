@@ -2,6 +2,8 @@
     ViewData["Title"] = "Home";
 }
 
+
+
 <!DOCTYPE html>
 <html lang="nl">
 
@@ -12,7 +14,7 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/Index.css" type="text/css" media="screen" />
 </head>
-<body>
+<body onload="display()">
     <div class="container">
         <!-- start row-->
         <div class="row">
@@ -25,7 +27,7 @@
 
                 <div class="sidemenu-content">
                     <ul class=" sidemenu-category">
-                        <li> <a class="sidemenu-category-item">Beefbburgers</a> </li>
+                        <li> <a class="sidemenu-category-item">Beefburgers</a> </li>
                         <li> <a class="sidemenu-category-item">Beefburgers Menu's</a> </li>
                         <li> <a class="sidemenu-category-item">Chickenburgers</a> </li>
                         <li> <a class="sidemenu-category-item">Chickenburgers Menu's</a> </li>
@@ -136,10 +138,8 @@
 
     <script>
         function display() {
-            $('#product').load('@Url.Action("_productDisplay", "Home")');
-            alert("hoi");
+            $('#product').load('@Url.Action("DisplayProducts", "Home")');
         }
-
     </script>
 
 </body>
