@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/Index.css" type="text/css" media="screen" />
 </head>
-<body onload="display()">
+<body onload="AllProducts()">
     <div class="container">
         <!-- start row-->
         <div class="row">
@@ -27,69 +27,88 @@
 
                 <div class="sidemenu-content">
                     <ul class=" sidemenu-category">
-                        <li> <a class="sidemenu-category-item">Beefburgers</a> </li>
-                        <li> <a class="sidemenu-category-item">Beefburgers Menu's</a> </li>
-                        <li> <a class="sidemenu-category-item">Chickenburgers</a> </li>
-                        <li> <a class="sidemenu-category-item">Chickenburgers Menu's</a> </li>
-                        <li> <a class="sidemenu-category-item">Buckets</a> </li>
-                        <li> <a class="sidemenu-category-item">Portie's </a> </li>
-                        <li> <a class="sidemenu-category-item">Friet</a> </li>
-                        <li> <a class="sidemenu-category-item">Ben & Jerry's </a> </li>
-                        <li> <a class="sidemenu-category-item">Dranken</a> </li>
-                        <li> <a class="sidemenu-category-item">Sauzen</a> </li>
+                        <li> <a href="javascript:void(0)" class="sidemenu-category-item" onclick="Beefburgers()">Beefburgers</a> </li>
+                        <li> <a href="javascript:void(0)" class="sidemenu-category-item" onclick="BeefburgersMenu()">Beefburgers Menu's</a> </li>
+                        <li> <a href="javascript:void(0)" class="sidemenu-category-item" onclick="Chickenburgers()">Chickenburgers</a> </li>
+                        <li> <a href="javascript:void(0)" class="sidemenu-category-item" onclick="ChickenburgersMenu()">Chickenburgers Menu's</a> </li>
+                        <li> <a href="javascript:void(0)" class="sidemenu-category-item" onclick="Buckets()">Buckets</a> </li>
+                        <li> <a href="javascript:void(0)" class="sidemenu-category-item" onclick="Portie()">Portie's </a> </li>
+                        <li> <a href="javascript:void(0)" class="sidemenu-category-item" onclick="Friet()">Friet</a> </li>
+                        <li> <a href="javascript:void(0)" class="sidemenu-category-item" onclick="Icecream()">Ben & Jerry's </a> </li>
+                        <li> <a href="javascript:void(0)" class="sidemenu-category-item" onclick="Drinks()">Dranken</a> </li>
+                        <li> <a href="javascript:void(0)" class="sidemenu-category-item" onclick="Saus()">Sauzen</a> </li>
                     </ul>
                 </div>
-                <!-- horizontal divider-->
-                <hr />
+               
 
                 <div class="sidemenu-footer mt-4">
-                    <h1> Openingstijden</h1>
-                    <p>
-                        Dagelijks geopend van
-                        15:00 t/m 20:45 uur.
-                    </p>
+                    <!-- horizontal divider-->
+                    <hr />
+
+                    <div class="mt-4">
+                        <h1> Openingstijden</h1>
+                        <p>
+                            Dagelijks geopend van
+                            15:00 t/m 20:45 uur.
+                        </p>
+                    </div>
+
+                    <!-- horizontal divider-->
+                    <hr />
+
+                    <div class="mt-4">
+                        <h1> Bezorglocaties</h1>
+                        <p>
+                            Wij bezorgen in de volgende postcodes:
+                            <br><br>
+                            5151, 5152, 5140, 5141, 5142, 5143, 5144, 5145, 5146
+                        </p>
+                    </div>
+
+                    <!-- horizontal divider-->
+                    <hr />
+
+
+                    <!--bezorgtijden table-->
+                    <div class="mt-4">
+                        <h1> Bezorgtijden</h1>
+                        <table class="table table-borderless">
+                            <tbody>
+                                <tr>
+                                    <th scope="row">Maandag</th>
+                                    <td>15:00-20:45</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Dinsdag</th>
+                                    <td>15:00-20:45</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Woensdag</th>
+                                    <td>15:00-20:45</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Donderdag</th>
+                                    <td>15:00-20:45</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Vrijdag</th>
+                                    <td>15:00-20:45</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Zaterdag</th>
+                                    <td>15:00-20:45</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Zondag</th>
+                                    <td>15:00-20:45</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
                 </div>
 
-                <!-- horizontal divider-->
-                <hr />
-
-                <!--bezorgtijden table-->
-                <div class="sidemenu-footer mt-4">
-                    <h1> Bezorgtijden</h1>
-                    <table class="table table-borderless">
-                        <tbody>
-                            <tr>
-                                <th scope="row">Maandag</th>
-                                <td>15:00-20:45</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">Dinsdag</th>
-                                <td>15:00-20:45</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">Woensdag</th>
-                                <td>15:00-20:45</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">Donderdag</th>
-                                <td>15:00-20:45</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">Vrijdag</th>
-                                <td>15:00-20:45</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">Zaterdag</th>
-                                <td>15:00-20:45</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">Zondag</th>
-                                <td>15:00-20:45</td>
-                            </tr>
-                        </tbody>
-                    </table>
-
-                </div>
+             
             </div>
             <!-- End Sidemenu-->
 
@@ -137,10 +156,50 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 
     <script>
-        function display() {
-            $('#product').load('@Url.Action("DisplayProducts", "Home")');
+
+        function AllProducts() {
+          $('#product').load('@Url.Action("AllProducts", "Home")');
+        }
+
+        function Beefburgers() {
+            $('#product').load('@Url.Action("GetBeefBurgers", "Home")');
+        }
+
+        function BeefburgersMenu() {
+            $('#product').load('@Url.Action("GetBeefBurgersMenu", "Home")');
+        }
+
+        function Chickenburgers() {
+            $('#product').load('@Url.Action("GetChickenBurgers", "Home")');
+        }
+
+        function ChickenburgersMenu() {
+            $('#product').load('@Url.Action("GetChickenBurgersMenu", "Home")');
+        }
+
+        function Buckets() {
+            $('#product').load('@Url.Action("GetBuckets", "Home")');
+        }
+
+        function Portie() {
+            $('#product').load('@Url.Action("GetPortie", "Home")');
+        }
+
+        function Friet() {
+            $('#product').load('@Url.Action("GetFriet", "Home")');
+        }
+
+        function Icecream() {
+            $('#product').load('@Url.Action("GetIcecream", "Home")');
+        }
+
+        function Drinks() {
+              $('#product').load('@Url.Action("GetDrinks", "Home")');
+        }
+
+        function Saus() {
+            $('#product').load('@Url.Action("GetSaus", "Home")');
         }
     </script>
-
 </body>
 </html>

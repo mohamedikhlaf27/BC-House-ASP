@@ -31,15 +31,124 @@ namespace BC_House_ASP.Controllers
             return View();
         }
 
+        //[HttpGet]
+        //public ActionResult DisplayProducts()
+        //{
+            
+        //    List<Product> productslist = productContainer.GetList();
+
+        //    return PartialView("../Partials/_productDisplay", productslist);
+
+        //}
+
         [HttpGet]
-        public ActionResult DisplayProducts()
+        public ActionResult GetBeefBurgers()
+        {
+            productContainer.ClearList();
+            productContainer.BeefBurgers();
+            List<Product> productslist = productContainer.GetList();
+
+            return PartialView("../Partials/_productDisplay", productslist);
+        }
+
+        [HttpGet]
+        public ActionResult GetBeefBurgersMenu()
+        {
+            productContainer.ClearList();
+            productContainer.BeefBurgersMenu();
+            List<Product> productslist = productContainer.GetList();
+
+            return PartialView("../Partials/_productDisplay", productslist);
+        }
+
+        [HttpGet]
+        public ActionResult GetChickenBurgers()
+        {
+            productContainer.ClearList();
+            productContainer.ChickenBurgers();
+            List<Product> productslist = productContainer.GetList();
+
+            return PartialView("../Partials/_productDisplay", productslist);
+        }
+
+        [HttpGet]
+        public ActionResult GetChickenBurgersMenu()
+        {
+            productContainer.ClearList();
+            productContainer.ChickenBurgerMenu();
+            List<Product> productslist = productContainer.GetList();
+
+            return PartialView("../Partials/_productDisplay", productslist);
+        }
+
+        [HttpGet]
+        public ActionResult GetBuckets()
+        {
+            productContainer.ClearList();
+            productContainer.Buckets();
+            List<Product> productslist = productContainer.GetList();
+
+            return PartialView("../Partials/_productDisplay", productslist);
+        }
+
+        [HttpGet]
+        public ActionResult GetPortie()
+        {
+            productContainer.ClearList();
+            productContainer.Portie();
+            List<Product> productslist = productContainer.GetList();
+
+            return PartialView("../Partials/_productDisplay", productslist);
+        }
+
+        [HttpGet]
+        public ActionResult GetFriet()
+        {
+            productContainer.ClearList();
+            productContainer.Friet();
+            List<Product> productslist = productContainer.GetList();
+
+            return PartialView("../Partials/_productDisplay", productslist);
+        }
+
+        [HttpGet]
+        public ActionResult GetIcecream()
+        {
+            productContainer.ClearList();
+            productContainer.Icecream();
+            List<Product> productslist = productContainer.GetList();
+
+            return PartialView("../Partials/_productDisplay", productslist);
+        }
+
+        [HttpGet]
+        public ActionResult GetSaus()
+        {
+            productContainer.ClearList();
+            productContainer.Saus();
+            List<Product> productslist = productContainer.GetList();
+
+            return PartialView("../Partials/_productDisplay", productslist);
+        }
+
+        [HttpGet]
+        public ActionResult GetDrinks()
+        {
+            productContainer.ClearList();
+            productContainer.Drinks();
+            List<Product> productslist = productContainer.GetList();
+
+            return PartialView("../Partials/_productDisplay", productslist);
+        }
+
+        [HttpGet]
+        public ActionResult AllProducts()
         {
             productContainer.ClearList();
             productContainer.AllProducts();
             List<Product> productslist = productContainer.GetList();
 
             return PartialView("../Partials/_productDisplay", productslist);
-
         }
 
         //[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

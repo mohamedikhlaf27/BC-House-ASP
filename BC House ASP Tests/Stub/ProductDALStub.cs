@@ -28,7 +28,79 @@ namespace BC_House_ASP_Tests.Stub
             ExistReturnValue = true;
         }
 
+        public void FilterBeefBurgersMenu()
+        {
+            if (ExistReturnValue == null)
+            {
+                throw new NullReferenceException("Invalid use of stub code. First set field ExistsReturnValue");
+            }
+            ExistReturnValue = true;
+        }
+
+        public void FilterBuckets()
+        {
+            if (ExistReturnValue == null)
+            {
+                throw new NullReferenceException("Invalid use of stub code. First set field ExistsReturnValue");
+            }
+            ExistReturnValue = true;
+        }
+
+        public void FilterChickenBurger()
+        {
+            if (ExistReturnValue == null)
+            {
+                throw new NullReferenceException("Invalid use of stub code. First set field ExistsReturnValue");
+            }
+            ExistReturnValue = true;
+        }
+
+        public void FilterChickenBurgerMenu()
+        {
+            if (ExistReturnValue == null)
+            {
+                throw new NullReferenceException("Invalid use of stub code. First set field ExistsReturnValue");
+            }
+            ExistReturnValue = true;
+        }
+
         public void FilterDrinks()
+        {
+            if (ExistReturnValue == null)
+            {
+                throw new NullReferenceException("Invalid use of stub code. First set field ExistsReturnValue");
+            }
+            ExistReturnValue = true;
+        }
+
+        public void FilterFriet()
+        {
+            if (ExistReturnValue == null)
+            {
+                throw new NullReferenceException("Invalid use of stub code. First set field ExistsReturnValue");
+            }
+            ExistReturnValue = true;
+        }
+
+        public void FilterIcecream()
+        {
+            if (ExistReturnValue == null)
+            {
+                throw new NullReferenceException("Invalid use of stub code. First set field ExistsReturnValue");
+            }
+            ExistReturnValue = true;
+        }
+
+        public void FilterPortie()
+        {
+            if (ExistReturnValue == null)
+            {
+                throw new NullReferenceException("Invalid use of stub code. First set field ExistsReturnValue");
+            }
+            ExistReturnValue = true;
+        }
+
+        public void FilterSaus()
         {
             if (ExistReturnValue == null)
             {

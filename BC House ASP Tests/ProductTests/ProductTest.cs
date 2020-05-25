@@ -10,7 +10,6 @@ namespace BC_House_ASP_Tests.ProductTests
 {
     public class ProductTest
     {
-
         [Fact]
         public void Check_If_Get_All_Products_From_Database()
         {
@@ -36,6 +35,126 @@ namespace BC_House_ASP_Tests.ProductTests
 
             // act 
             productDALStub.FilterBeefBurgers();
+
+            // assert
+            Assert.True(productDALStub.ExistReturnValue);
+        }
+
+        [Fact]
+        public void Check_If_Get_All_BeefBurgersMenu_From_Database()
+        {
+            // arrange
+            var productDALStub = new ProductDALStub();
+
+            productDALStub.ExistReturnValue = false;
+
+            // act 
+            productDALStub.FilterBeefBurgersMenu();
+
+            // assert
+            Assert.True(productDALStub.ExistReturnValue);
+        }
+
+        [Fact]
+        public void Check_If_Get_All_ChickenBurger_From_Database()
+        {
+            // arrange
+            var productDALStub = new ProductDALStub();
+
+            productDALStub.ExistReturnValue = false;
+
+            // act 
+            productDALStub.FilterChickenBurger();
+
+            // assert
+            Assert.True(productDALStub.ExistReturnValue);
+        }
+
+        [Fact]
+        public void Check_If_Get_All_ChickenBurgerMenu_From_Database()
+        {
+            // arrange
+            var productDALStub = new ProductDALStub();
+
+            productDALStub.ExistReturnValue = false;
+
+            // act 
+            productDALStub.FilterChickenBurgerMenu();
+
+            // assert
+            Assert.True(productDALStub.ExistReturnValue);
+        }
+
+        [Fact]
+        public void Check_If_Get_All_Buckets_From_Database()
+        {
+            // arrange
+            var productDALStub = new ProductDALStub();
+
+            productDALStub.ExistReturnValue = false;
+
+            // act 
+            productDALStub.FilterBuckets();
+
+            // assert
+            Assert.True(productDALStub.ExistReturnValue);
+        }
+
+        [Fact]
+        public void Check_If_Get_All_Portie_From_Database()
+        {
+            // arrange
+            var productDALStub = new ProductDALStub();
+
+            productDALStub.ExistReturnValue = false;
+
+            // act 
+            productDALStub.FilterPortie();
+
+            // assert
+            Assert.True(productDALStub.ExistReturnValue);
+        }
+
+        [Fact]
+        public void Check_If_Get_All_Friet_From_Database()
+        {
+            // arrange
+            var productDALStub = new ProductDALStub();
+
+            productDALStub.ExistReturnValue = false;
+
+            // act 
+            productDALStub.FilterFriet();
+
+            // assert
+            Assert.True(productDALStub.ExistReturnValue);
+        }
+
+        [Fact]
+        public void Check_If_Get_All_Icecream_From_Database()
+        {
+            // arrange
+            var productDALStub = new ProductDALStub();
+
+            productDALStub.ExistReturnValue = false;
+
+            // act 
+            productDALStub.FilterIcecream();
+
+            // assert
+            Assert.True(productDALStub.ExistReturnValue);
+        }
+
+        [Fact]
+        public void Check_If_Get_All_Saus_From_Database()
+        {
+            // arrange
+            var productDALStub = new ProductDALStub();
+
+            productDALStub.ExistReturnValue = false;
+
+            // act 
+            productDALStub.FilterSaus();
 
             // assert
             Assert.True(productDALStub.ExistReturnValue);
@@ -68,54 +187,6 @@ namespace BC_House_ASP_Tests.ProductTests
 
             // assert
             Assert.True(productDALStub.ExistReturnValue);
-        }
-
-        [Fact]
-        public void Check_Get_Beefburgers_In_Container()
-        {
-            //Arrange
-            var productDALStub = new ProductDALStub();
-            var productContainer = new ProductContainer(productDALStub);
-            productDALStub.ExistReturnValue = false;
-
-            //Act
-            productContainer.BeefBurgers();
-
-            //Assert
-            Assert.True(productDALStub.ExistReturnValue);
-
-        }
-
-        [Fact]
-        public void Check_Get_Drinks_In_Container()
-        {
-            //Arrange
-            var productDALStub = new ProductDALStub();
-            var productContainer = new ProductContainer(productDALStub);
-            productDALStub.ExistReturnValue = false;
-
-            //Act
-            productContainer.Drinks();
-
-            //Assert
-            Assert.True(productDALStub.ExistReturnValue);
-        }
-
-        [Fact]
-        public void Check_If_Get_List()
-        {
-            //Arrange
-            var productDALStub = new ProductDALStub();
-            var productContainer = new ProductContainer(productDALStub);
-            List<Product> products = new List<Product>();
-
-            productDALStub.ExistReturnValue = false;
-
-            //Act
-            var productList = productContainer.GetList();
-
-            //Assert
-            Assert.Equal(products, productList);
         }
     }
 }

@@ -45,9 +45,137 @@ namespace BC_House_ASP.Database
             SaveProductsInList();
         }
 
+        public void FilterBeefBurgersMenu()
+        {
+            cmd = new SqlCommand("Select * from Product Where tag = 'Beefmenu'", GetCon());
+            OpenConnectionToDB();
+
+            SqlDataAdapter adapt = new SqlDataAdapter(cmd);
+            AddTable();
+            adapt.Fill(table);
+
+            CloseConnectionToDB();
+
+            cmd = new SqlCommand();
+
+            SaveProductsInList();
+        }
+
+        public void FilterBuckets()
+        {
+            cmd = new SqlCommand("Select * from Product Where tag = 'Buckets'", GetCon());
+            OpenConnectionToDB();
+
+            SqlDataAdapter adapt = new SqlDataAdapter(cmd);
+            AddTable();
+            adapt.Fill(table);
+
+            CloseConnectionToDB();
+
+            cmd = new SqlCommand();
+
+            SaveProductsInList();
+        }
+
+        public void FilterChickenBurger()
+        {
+            cmd = new SqlCommand("Select * from Product Where tag = 'Chickenburgers'", GetCon());
+            OpenConnectionToDB();
+
+            SqlDataAdapter adapt = new SqlDataAdapter(cmd);
+            AddTable();
+            adapt.Fill(table);
+
+            CloseConnectionToDB();
+
+            cmd = new SqlCommand();
+
+            SaveProductsInList();
+        }
+
+        public void FilterChickenBurgerMenu()
+        {
+            cmd = new SqlCommand("Select * from Product Where tag = 'Chickenmenu'", GetCon());
+            OpenConnectionToDB();
+
+            SqlDataAdapter adapt = new SqlDataAdapter(cmd);
+            AddTable();
+            adapt.Fill(table);
+
+            CloseConnectionToDB();
+
+            cmd = new SqlCommand();
+
+            SaveProductsInList();
+        }
+
         public void FilterDrinks()
         {
             cmd = new SqlCommand("Select * from Product Where tag = 'Drinks'", GetCon());
+            OpenConnectionToDB();
+
+            SqlDataAdapter adapt = new SqlDataAdapter(cmd);
+            AddTable();
+            adapt.Fill(table);
+
+            CloseConnectionToDB();
+
+            cmd = new SqlCommand();
+
+            SaveProductsInList();
+        }
+
+        public void FilterSaus()
+        {
+            cmd = new SqlCommand("Select * from Product Where tag = 'Saus'", GetCon());
+            OpenConnectionToDB();
+
+            SqlDataAdapter adapt = new SqlDataAdapter(cmd);
+            AddTable();
+            adapt.Fill(table);
+
+            CloseConnectionToDB();
+
+            cmd = new SqlCommand();
+
+            SaveProductsInList();
+        }
+
+        public void FilterFriet()
+        {
+            cmd = new SqlCommand("Select * from Product Where tag = 'Friet'", GetCon());
+            OpenConnectionToDB();
+
+            SqlDataAdapter adapt = new SqlDataAdapter(cmd);
+            AddTable();
+            adapt.Fill(table);
+
+            CloseConnectionToDB();
+
+            cmd = new SqlCommand();
+
+            SaveProductsInList();
+        }
+
+        public void FilterIcecream()
+        {
+            cmd = new SqlCommand("Select * from Product Where tag = 'Icecream'", GetCon());
+            OpenConnectionToDB();
+
+            SqlDataAdapter adapt = new SqlDataAdapter(cmd);
+            AddTable();
+            adapt.Fill(table);
+
+            CloseConnectionToDB();
+
+            cmd = new SqlCommand();
+
+            SaveProductsInList();
+        }
+
+        public void FilterPortie()
+        {
+            cmd = new SqlCommand("Select * from Product Where tag = 'Portie'", GetCon());
             OpenConnectionToDB();
 
             SqlDataAdapter adapt = new SqlDataAdapter(cmd);
@@ -74,6 +202,7 @@ namespace BC_House_ASP.Database
                     var dr = table.Rows[i];
                     product = new Product()
                     {
+                        id = Convert.ToInt32(dr["ID"]),
                         productNaam = dr["Name"].ToString(),
                         prijs = Convert.ToDouble(dr["Prize"]),
                         omschrijving = dr["Description"].ToString()
