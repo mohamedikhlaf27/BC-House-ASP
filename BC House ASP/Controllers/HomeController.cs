@@ -151,6 +151,22 @@ namespace BC_House_ASP.Controllers
             return PartialView("../Partials/_productDisplay", productslist);
         }
 
+
+        [HttpGet]
+        public ActionResult FilterProducts(string categorie)
+        {
+            productContainer.ClearList();
+            productContainer.AllProducts();
+            List<Product> productslist = productContainer.GetList();
+
+            foreach (var product in from product in productslist
+                                where product.Tag == categorie
+                                select new { product.productNaam, product.prijs, product.omschrijving})
+            {
+            }
+            return PartialView("../Partials/_productDisplay", productslist);
+        }
+
         //[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         //public IActionResult Error()
         //{

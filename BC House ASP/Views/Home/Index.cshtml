@@ -27,7 +27,7 @@
 
                 <div class="sidemenu-content">
                     <ul class=" sidemenu-category">
-                        <li> <a href="javascript:void(0)" class="sidemenu-category-item" onclick="Beefburgers()">Beefburgers</a> </li>
+                        <li> <a name="Beefburgers" href="javascript:void(0)" class="sidemenu-category-item" onclick="Filter()">Beefburgers</a> </li>
                         <li> <a href="javascript:void(0)" class="sidemenu-category-item" onclick="BeefburgersMenu()">Beefburgers Menu's</a> </li>
                         <li> <a href="javascript:void(0)" class="sidemenu-category-item" onclick="Chickenburgers()">Chickenburgers</a> </li>
                         <li> <a href="javascript:void(0)" class="sidemenu-category-item" onclick="ChickenburgersMenu()">Chickenburgers Menu's</a> </li>
@@ -39,7 +39,7 @@
                         <li> <a href="javascript:void(0)" class="sidemenu-category-item" onclick="Saus()">Sauzen</a> </li>
                     </ul>
                 </div>
-               
+
 
                 <div class="sidemenu-footer mt-4">
                     <!-- horizontal divider-->
@@ -108,7 +108,7 @@
                     </div>
                 </div>
 
-             
+
             </div>
             <!-- End Sidemenu-->
 
@@ -200,6 +200,24 @@
         function Saus() {
             $('#product').load('@Url.Action("GetSaus", "Home")');
         }
+
+    </script>
+
+    <script>
+
+        function Filter() {
+
+            var url = $('#product').load('@Url.Action("FilterProducts", "Home")');
+            var tag = $('#name').val();
+            //$.get(url, { categorie: tag }, function (data) {
+            //    $("#product").html(data);
+            //});
+
+            $.get(url, tag), function (data){
+                $("#product").html(data);
+            }
+        }
+
     </script>
 </body>
 </html>

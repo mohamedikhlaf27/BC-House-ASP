@@ -205,7 +205,8 @@ namespace BC_House_ASP.Database
                         id = Convert.ToInt32(dr["ID"]),
                         productNaam = dr["Name"].ToString(),
                         prijs = Convert.ToDouble(dr["Prize"]),
-                        omschrijving = dr["Description"].ToString()
+                        omschrijving = dr["Description"].ToString(),
+                        Tag = dr["Tag"].ToString()
                     };
                     productslist.Add(product);
                 }
