@@ -29,55 +29,6 @@ namespace BC_House_ASP.Container
             productslist.Clear();
         }
 
-        public void BeefBurgers()
-        {
-            productDAL.FilterBeefBurgers();
-        }
-
-        public void Drinks()
-        {
-            productDAL.FilterDrinks();
-        }
-        public void BeefBurgersMenu()
-        {
-            productDAL.FilterBeefBurgersMenu();
-        }
-
-        public void ChickenBurgers()
-        {
-            productDAL.FilterChickenBurger();
-        }
-
-        public void ChickenBurgerMenu()
-        {
-            productDAL.FilterChickenBurgerMenu();
-        }
-
-        public void Buckets()
-        {
-            productDAL.FilterBuckets();
-        }
-
-        public void Portie()
-        {
-            productDAL.FilterPortie();
-        }
-
-        public void Friet()
-        {
-            productDAL.FilterFriet();
-        }
-
-        public void Icecream()
-        {
-            productDAL.FilterIcecream();
-        }
-
-        public void Saus()
-        {
-            productDAL.FilterSaus();
-        }
-
         public void AllProducts()
         {
             productDAL.AllProducts();

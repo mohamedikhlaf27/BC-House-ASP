@@ -31,116 +31,6 @@ namespace BC_House_ASP.Controllers
             return View();
         }
 
-        //[HttpGet]
-        //public ActionResult DisplayProducts()
-        //{
-            
-        //    List<Product> productslist = productContainer.GetList();
-
-        //    return PartialView("../Partials/_productDisplay", productslist);
-
-        //}
-
-        [HttpGet]
-        public ActionResult GetBeefBurgers()
-        {
-            productContainer.ClearList();
-            productContainer.BeefBurgers();
-            List<Product> productslist = productContainer.GetList();
-
-            return PartialView("../Partials/_productDisplay", productslist);
-        }
-
-        [HttpGet]
-        public ActionResult GetBeefBurgersMenu()
-        {
-            productContainer.ClearList();
-            productContainer.BeefBurgersMenu();
-            List<Product> productslist = productContainer.GetList();
-
-            return PartialView("../Partials/_productDisplay", productslist);
-        }
-
-        [HttpGet]
-        public ActionResult GetChickenBurgers()
-        {
-            productContainer.ClearList();
-            productContainer.ChickenBurgers();
-            List<Product> productslist = productContainer.GetList();
-
-            return PartialView("../Partials/_productDisplay", productslist);
-        }
-
-        [HttpGet]
-        public ActionResult GetChickenBurgersMenu()
-        {
-            productContainer.ClearList();
-            productContainer.ChickenBurgerMenu();
-            List<Product> productslist = productContainer.GetList();
-
-            return PartialView("../Partials/_productDisplay", productslist);
-        }
-
-        [HttpGet]
-        public ActionResult GetBuckets()
-        {
-            productContainer.ClearList();
-            productContainer.Buckets();
-            List<Product> productslist = productContainer.GetList();
-
-            return PartialView("../Partials/_productDisplay", productslist);
-        }
-
-        [HttpGet]
-        public ActionResult GetPortie()
-        {
-            productContainer.ClearList();
-            productContainer.Portie();
-            List<Product> productslist = productContainer.GetList();
-
-            return PartialView("../Partials/_productDisplay", productslist);
-        }
-
-        [HttpGet]
-        public ActionResult GetFriet()
-        {
-            productContainer.ClearList();
-            productContainer.Friet();
-            List<Product> productslist = productContainer.GetList();
-
-            return PartialView("../Partials/_productDisplay", productslist);
-        }
-
-        [HttpGet]
-        public ActionResult GetIcecream()
-        {
-            productContainer.ClearList();
-            productContainer.Icecream();
-            List<Product> productslist = productContainer.GetList();
-
-            return PartialView("../Partials/_productDisplay", productslist);
-        }
-
-        [HttpGet]
-        public ActionResult GetSaus()
-        {
-            productContainer.ClearList();
-            productContainer.Saus();
-            List<Product> productslist = productContainer.GetList();
-
-            return PartialView("../Partials/_productDisplay", productslist);
-        }
-
-        [HttpGet]
-        public ActionResult GetDrinks()
-        {
-            productContainer.ClearList();
-            productContainer.Drinks();
-            List<Product> productslist = productContainer.GetList();
-
-            return PartialView("../Partials/_productDisplay", productslist);
-        }
-
         [HttpGet]
         public ActionResult AllProducts()
         {
@@ -152,19 +42,26 @@ namespace BC_House_ASP.Controllers
         }
 
 
-        [HttpGet]
+        [HttpPost]
         public ActionResult FilterProducts(string categorie)
         {
             productContainer.ClearList();
             productContainer.AllProducts();
             List<Product> productslist = productContainer.GetList();
 
-            foreach (var product in from product in productslist
-                                where product.Tag == categorie
-                                select new { product.productNaam, product.prijs, product.omschrijving})
+            List<Product> newList = new List<Product>();
+
+            foreach(var product in productslist)
             {
+                Product newProduct = new Product();
+
+                if(product.Tag == categorie)
+                {
+                    newProduct = product;
+                    newList.Add(newProduct);
+                }
             }
-            return PartialView("../Partials/_productDisplay", productslist);
+            return PartialView("../Partials/_productDisplay", newList);
         }
 
         //[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

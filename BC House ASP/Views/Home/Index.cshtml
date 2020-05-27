@@ -27,16 +27,16 @@
 
                 <div class="sidemenu-content">
                     <ul class=" sidemenu-category">
-                        <li> <a name="Beefburgers" href="javascript:void(0)" class="sidemenu-category-item" onclick="Filter()">Beefburgers</a> </li>
-                        <li> <a href="javascript:void(0)" class="sidemenu-category-item" onclick="BeefburgersMenu()">Beefburgers Menu's</a> </li>
-                        <li> <a href="javascript:void(0)" class="sidemenu-category-item" onclick="Chickenburgers()">Chickenburgers</a> </li>
-                        <li> <a href="javascript:void(0)" class="sidemenu-category-item" onclick="ChickenburgersMenu()">Chickenburgers Menu's</a> </li>
-                        <li> <a href="javascript:void(0)" class="sidemenu-category-item" onclick="Buckets()">Buckets</a> </li>
-                        <li> <a href="javascript:void(0)" class="sidemenu-category-item" onclick="Portie()">Portie's </a> </li>
-                        <li> <a href="javascript:void(0)" class="sidemenu-category-item" onclick="Friet()">Friet</a> </li>
-                        <li> <a href="javascript:void(0)" class="sidemenu-category-item" onclick="Icecream()">Ben & Jerry's </a> </li>
-                        <li> <a href="javascript:void(0)" class="sidemenu-category-item" onclick="Drinks()">Dranken</a> </li>
-                        <li> <a href="javascript:void(0)" class="sidemenu-category-item" onclick="Saus()">Sauzen</a> </li>
+                        <li> <a id="Beefburgers" href="javascript:void(0)" class="sidemenu-category-item" onclick="Filter(this.id)">Beefburgers</a> </li>
+                        <li> <a id="Beefmenu" href="javascript:void(0)" class="sidemenu-category-item" onclick="Filter(this.id)">Beefburgers Menu's</a> </li>
+                        <li> <a id="Chickenburgers" href="javascript:void(0)" class="sidemenu-category-item" onclick="Filter(this.id)">Chickenburgers</a> </li>
+                        <li> <a id="Chickenmenu" href="javascript:void(0)" class="sidemenu-category-item" onclick="Filter(this.id)">Chickenburgers Menu's</a> </li>
+                        <li> <a id="Buckets" href="javascript:void(0)" class="sidemenu-category-item" onclick="Filter(this.id)">Buckets</a> </li>
+                        <li> <a id="Portie" href="javascript:void(0)" class="sidemenu-category-item" onclick="Filter(this.id)">Portie's </a> </li>
+                        <li> <a id="Friet" href="javascript:void(0)" class="sidemenu-category-item" onclick="Filter(this.id)">Friet</a> </li>
+                        <li> <a id="Icecream" href="javascript:void(0)" class="sidemenu-category-item" onclick="Filter(this.id)">Ben & Jerry's </a> </li>
+                        <li> <a id="Drinks" href="javascript:void(0)" class="sidemenu-category-item" onclick="Filter(this.id)">Dranken</a> </li>
+                        <li> <a id="Saus" href="javascript:void(0)" class="sidemenu-category-item" onclick="Filter(this.id)">Sauzen</a> </li>
                     </ul>
                 </div>
 
@@ -152,72 +152,36 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
-
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src = "https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    
 
     <script>
 
         function AllProducts() {
           $('#product').load('@Url.Action("AllProducts", "Home")');
         }
-
-        function Beefburgers() {
-            $('#product').load('@Url.Action("GetBeefBurgers", "Home")');
-        }
-
-        function BeefburgersMenu() {
-            $('#product').load('@Url.Action("GetBeefBurgersMenu", "Home")');
-        }
-
-        function Chickenburgers() {
-            $('#product').load('@Url.Action("GetChickenBurgers", "Home")');
-        }
-
-        function ChickenburgersMenu() {
-            $('#product').load('@Url.Action("GetChickenBurgersMenu", "Home")');
-        }
-
-        function Buckets() {
-            $('#product').load('@Url.Action("GetBuckets", "Home")');
-        }
-
-        function Portie() {
-            $('#product').load('@Url.Action("GetPortie", "Home")');
-        }
-
-        function Friet() {
-            $('#product').load('@Url.Action("GetFriet", "Home")');
-        }
-
-        function Icecream() {
-            $('#product').load('@Url.Action("GetIcecream", "Home")');
-        }
-
-        function Drinks() {
-              $('#product').load('@Url.Action("GetDrinks", "Home")');
-        }
-
-        function Saus() {
-            $('#product').load('@Url.Action("GetSaus", "Home")');
-        }
-
     </script>
 
     <script>
 
-        function Filter() {
+        function Filter(categorieValue) {
 
-            var url = $('#product').load('@Url.Action("FilterProducts", "Home")');
-            var tag = $('#name').val();
-            //$.get(url, { categorie: tag }, function (data) {
-            //    $("#product").html(data);
-            //});
-
-            $.get(url, tag), function (data){
+            @*var url = $('#product').load('@Url.Action("FilterProducts", "Home")');
+            var tag = $(this).val();
+            $.get(url, { categorie: tag }, function (data) {
                 $("#product").html(data);
-            }
-        }
+            });*@
 
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("FilterProducts","Home")',
+                data: "categorie=" + categorieValue,
+            }).done(function (result){
+                $('#product').html(result);
+            }).fail(function (){
+                console.log('yeet');
+            });
+        }
     </script>
 </body>
 </html>
