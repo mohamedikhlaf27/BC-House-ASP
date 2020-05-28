@@ -1,4 +1,5 @@
 ﻿using BC_House_ASP.Container;
+using BC_House_ASP.Models;
 using BC_House_ASP_Tests.Stub;
 using System;
 using System.Collections.Generic;
@@ -14,11 +15,12 @@ namespace BC_House_ASP_Tests.KlantTests
         {
             // arrange
             var klantDalStub = new KlantDALStub();
+            Klant klant = new Klant();
 
             klantDalStub.ExistReturnValue = false;
 
             // act 
-            klantDalStub.AddKlant("aName", "aEmail", "0612345678", "aPassword", "aPostalCode", "aHouseNR", "aStreet", "aResidence");
+            klantDalStub.AddKlant(klant);
 
             // assert
             Assert.True(klantDalStub.ExistReturnValue);
@@ -30,11 +32,11 @@ namespace BC_House_ASP_Tests.KlantTests
             // arrange
             var klantDalStub = new KlantDALStub();
             var klantContainer = new KlantContainer(klantDalStub);
-
+            Klant klant = new Klant();
             klantDalStub.ExistReturnValue = false;
 
             // act 
-            klantContainer.Accountmaken("aName", "aEmail", "0612345678", "aPassword", "aPostalCode", "aHouseNR", "aStreet", "aResidence");
+            klantContainer.Accountmaken(klant);
 
             // assert
             Assert.True(klantDalStub.ExistReturnValue);

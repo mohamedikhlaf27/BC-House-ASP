@@ -1,4 +1,5 @@
 ﻿using BC_House_ASP.Interface;
+using BC_House_ASP.Models;
 using BC_House_ASP.Tools;
 using System;
 using System.Collections.Generic;
@@ -25,24 +26,24 @@ namespace BC_House_ASP.Container
 
         // methodes voor login
         // checkt of dat de gebruiker bestaat
-        public bool CheckIfUserExists(string klantEmail, string klantPassword)
+        public bool CheckIfUserExists(Klant klant)
         {
   
-            if (!klantDAL.CheckEmailExistance(klantEmail))
+            if (!klantDAL.CheckEmailExistance(klant))
             {
                 return false;
             }
-            else if (!klantDAL.CheckPasswordByEmail(klantPassword, klantEmail))
+            else if (!klantDAL.CheckPasswordByEmail(klant))
             {
                 return false;
             }
             return true;
         }
 
-        // methodes voor registeren
-        public void Accountmaken(string klantNaam, string klantEmail, string telefoonNummer, string klantPassword, string postcode, string huisNummer, string straat, string woonplaats)
+
+        public void Accountmaken(Klant klant)
         {
-            klantDAL.AddKlant(klantNaam, klantEmail, telefoonNummer, klantPassword, postcode, huisNummer, straat, woonplaats);
+            klantDAL.AddKlant(klant);
         }
 
         // check of het in gevulde klopt

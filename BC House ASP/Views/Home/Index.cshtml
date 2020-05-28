@@ -139,9 +139,7 @@
                         </a>*@
                 </div>
 
-                <div class="row" id="product">
-
-                </div>
+                <div class="row" id="product"></div>
             </div>
         </div>
         <!--End row-->
@@ -164,12 +162,6 @@
 
         function Filter(categorieValue) {
 
-            @*var url = $('#product').load('@Url.Action("FilterProducts", "Home")');
-            var tag = $(this).val();
-            $.get(url, { categorie: tag }, function (data) {
-                $("#product").html(data);
-            });*@
-
             $.ajax({
                 type: "POST",
                 url: '@Url.Action("FilterProducts","Home")',
@@ -177,7 +169,7 @@
             }).done(function (result){
                 $('#product').html(result);
             }).fail(function (){
-                console.log('yeet');
+                console.log('fail');
             });
         }
     </script>

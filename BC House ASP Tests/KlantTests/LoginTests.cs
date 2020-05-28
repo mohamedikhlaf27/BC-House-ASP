@@ -1,4 +1,5 @@
 ﻿using BC_House_ASP.Container;
+using BC_House_ASP.Models;
 using BC_House_ASP_Tests.Stub;
 using System;
 using System.Collections.Generic;
@@ -15,11 +16,11 @@ namespace BC_House_ASP_Tests.KlantTests
             // arrange
             var klantDalStub = new KlantDALStub();
             //var klantdal = new KlantDAL();
-
+            Klant klant = new Klant();
             klantDalStub.ExistReturnValue = true;
 
             // act 
-            var Result = klantDalStub.CheckEmailExistance("email");
+            var Result = klantDalStub.CheckEmailExistance(klant);
 
             // assert
             Assert.True(Result);
@@ -31,11 +32,11 @@ namespace BC_House_ASP_Tests.KlantTests
             // arrange
             var klantDalStub = new KlantDALStub();
             //var klantdal = new KlantDAL();
-
+            Klant klant = new Klant();
             klantDalStub.ExistReturnValue = false;
 
             // act 
-            var Result = klantDalStub.CheckEmailExistance("email");
+            var Result = klantDalStub.CheckEmailExistance(klant);
 
             // assert
             Assert.False(Result);
@@ -47,11 +48,11 @@ namespace BC_House_ASP_Tests.KlantTests
             // arrange
             var klantDalStub = new KlantDALStub();
             //var klantdal = new KlantDAL();
-
+            Klant klant = new Klant();
             klantDalStub.ExistReturnValue = true;
 
             // act 
-            var Result = klantDalStub.CheckPasswordByEmail("aEmail", "aPassword");
+            var Result = klantDalStub.CheckPasswordByEmail(klant);
 
             // assert
             Assert.True(Result);
@@ -63,11 +64,11 @@ namespace BC_House_ASP_Tests.KlantTests
             // arrange
             var klantDalStub = new KlantDALStub();
             //var klantdal = new KlantDAL();
-
+            Klant klant = new Klant();
             klantDalStub.ExistReturnValue = false;
 
             // act 
-            var Result = klantDalStub.CheckPasswordByEmail("aEmail", "aPassword");
+            var Result = klantDalStub.CheckPasswordByEmail(klant);
 
             // assert
             Assert.False(Result);
@@ -79,11 +80,11 @@ namespace BC_House_ASP_Tests.KlantTests
             // arrange
             var klantDalStub = new KlantDALStub();
             var klantContainer = new KlantContainer(klantDalStub);
-
+            Klant klant = new Klant();
             klantDalStub.ExistReturnValue = true;
 
             // act 
-            var result = klantContainer.CheckIfUserExists("aEmail", "aPassword");
+            var result = klantContainer.CheckIfUserExists(klant);
 
             // assert
             Assert.True(result);

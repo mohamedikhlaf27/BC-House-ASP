@@ -9,6 +9,7 @@ using BC_House_ASP.Models;
 using BC_House_ASP.Interface;
 using BC_House_ASP.Database;
 using BC_House_ASP.Container;
+using Microsoft.AspNetCore.Http;
 
 namespace BC_House_ASP.Controllers
 {
@@ -16,12 +17,11 @@ namespace BC_House_ASP.Controllers
     {
         //private readonly ILogger<HomeController> _logger;
 
-        IProductDAL productDAL;
+
         ProductContainer productContainer;
         public HomeController()
         {
-            this.productDAL = new ProductDAL();
-            productContainer = new ProductContainer(productDAL);
+            productContainer = new ProductContainer(new ProductDAL());
             //ILogger<HomeController> logger
             //_logger = logger;
         }
@@ -36,11 +36,11 @@ namespace BC_House_ASP.Controllers
         {
             productContainer.ClearList();
             productContainer.AllProducts();
+            
             List<Product> productslist = productContainer.GetList();
 
             return PartialView("../Partials/_productDisplay", productslist);
         }
-
 
         [HttpPost]
         public ActionResult FilterProducts(string categorie)
@@ -48,14 +48,13 @@ namespace BC_House_ASP.Controllers
             productContainer.ClearList();
             productContainer.AllProducts();
             List<Product> productslist = productContainer.GetList();
-
             List<Product> newProductList = new List<Product>();
 
             foreach(var product in productslist)
             {
                 Product newProduct = new Product();
 
-                if(product.Tag == categorie)
+                if(product.tag == categorie)
                 {
                     newProduct = product;
                     newProductList.Add(newProduct);
@@ -64,13 +63,11 @@ namespace BC_House_ASP.Controllers
             return PartialView("../Partials/_productDisplay", newProductList);
         }
 
-
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
+        //[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        //public IActionResult Error()
+        //{
+        //    return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        //}
 
 
     }

@@ -12,13 +12,11 @@ namespace BC_House_ASP.Controllers
 {
     public class KlantController : Controller
     {
-        IKlantDAL klantDAL;
         KlantContainer klantContainer;
 
         public KlantController()
         {
-            this.klantDAL = new KlantDAL();
-            klantContainer = new KlantContainer(klantDAL);
+            klantContainer = new KlantContainer(new KlantDAL());
         }
 
         public IActionResult Login()
@@ -49,7 +47,7 @@ namespace BC_House_ASP.Controllers
                 //ModelState.AddModelError("klantPassword", "Vul je wachtwoord in!");
                 return View("Login");
             }
-            else if (klantContainer.CheckIfUserExists(klant.klantEmail, klant.klantPassword))
+            else if (klantContainer.CheckIfUserExists(klant))
             {
                 //Go to homepage
                 return RedirectToAction("Home");
@@ -71,7 +69,7 @@ namespace BC_House_ASP.Controllers
             }
             else if (klantContainer.registerCheck(klant.klantEmail, klant.klantPassword, klant.telefoonNummer, klant.postcode))
             {
-                klantContainer.Accountmaken(klant.klantNaam, klant.klantEmail, klant.telefoonNummer, klant.klantPassword, klant.postcode, klant.huisNummer, klant.straat, klant.woonplaats);
+                klantContainer.Accountmaken(klant);
                 return RedirectToAction("Login");
             }
             else

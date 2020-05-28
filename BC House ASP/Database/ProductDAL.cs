@@ -46,7 +46,7 @@ namespace BC_House_ASP.Database
                         productNaam = dr["Name"].ToString(),
                         prijs = Convert.ToDouble(dr["Prize"]),
                         omschrijving = dr["Description"].ToString(),
-                        Tag = dr["Tag"].ToString()
+                        tag = dr["Tag"].ToString()
                     };
                     productslist.Add(product);
                 }

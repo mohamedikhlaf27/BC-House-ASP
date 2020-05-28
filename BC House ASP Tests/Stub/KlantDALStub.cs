@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using BC_House_ASP.Interface;
+using BC_House_ASP.Models;
 
 namespace BC_House_ASP_Tests.Stub
 {
@@ -10,7 +11,7 @@ namespace BC_House_ASP_Tests.Stub
 
         public bool? ExistReturnValue = null;
 
-        public void AddKlant(string klantNaam, string klantEmail, string telefoonNummer, string klantPassword, string postcode, string huisNummer, string straat, string woonplaats)
+        public void AddKlant(Klant klant)
         {
             if (ExistReturnValue == null)
             {
@@ -19,7 +20,7 @@ namespace BC_House_ASP_Tests.Stub
             ExistReturnValue = true;
         }
 
-        public bool CheckEmailExistance(string klantEmail)
+        public bool CheckEmailExistance(Klant klant)
         {
             if (ExistReturnValue == null)
             {
@@ -28,7 +29,7 @@ namespace BC_House_ASP_Tests.Stub
             return ExistReturnValue.Value;
         }
 
-        public bool CheckPasswordByEmail(string klantPassword, string klantEmail)
+        public bool CheckPasswordByEmail(Klant klant)
         {
             if (ExistReturnValue == null)
             {
