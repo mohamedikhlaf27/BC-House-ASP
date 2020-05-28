@@ -31,7 +31,7 @@ namespace BC_House_ASP.Container
 
         public void AllProducts()
         {
-            productDAL.AllProducts();
+            productDAL.SelectAllProducts();
         }
     }
 }

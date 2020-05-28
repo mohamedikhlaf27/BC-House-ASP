@@ -32,7 +32,7 @@ namespace BC_House_ASP.Controllers
         }
 
         [HttpGet]
-        public ActionResult AllProducts()
+        public ActionResult GetAllProducts()
         {
             productContainer.ClearList();
             productContainer.AllProducts();
@@ -49,7 +49,7 @@ namespace BC_House_ASP.Controllers
             productContainer.AllProducts();
             List<Product> productslist = productContainer.GetList();
 
-            List<Product> newList = new List<Product>();
+            List<Product> newProductList = new List<Product>();
 
             foreach(var product in productslist)
             {
@@ -58,17 +58,19 @@ namespace BC_House_ASP.Controllers
                 if(product.Tag == categorie)
                 {
                     newProduct = product;
-                    newList.Add(newProduct);
+                    newProductList.Add(newProduct);
                 }
             }
-            return PartialView("../Partials/_productDisplay", newList);
+            return PartialView("../Partials/_productDisplay", newProductList);
         }
 
-        //[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        //public IActionResult Error()
-        //{
-        //    return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        //}
+
+
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult Error()
+        {
+            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
 
 
     }

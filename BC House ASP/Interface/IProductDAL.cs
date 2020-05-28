@@ -7,7 +7,7 @@ namespace BC_House_ASP.Interface
 {
     public interface IProductDAL
     {
-        void AllProducts();
+        void SelectAllProducts();
        
         void SaveProductsInList();
     }

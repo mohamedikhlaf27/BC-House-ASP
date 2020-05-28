@@ -12,7 +12,6 @@ namespace BC_House_ASP.Models
         public string productNaam { get; set; }
         public double prijs { get; set; }
         public string omschrijving { get; set; }
-
         public string Tag { get; set; }
     }
 }

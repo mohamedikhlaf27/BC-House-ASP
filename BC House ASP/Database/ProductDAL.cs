@@ -13,7 +13,7 @@ namespace BC_House_ASP.Database
     {
         IProductDAL productDAL;
 
-        public void AllProducts()
+        public void SelectAllProducts()
         {
             cmd = new SqlCommand("Select * from Product", GetCon());
             OpenConnectionToDB();

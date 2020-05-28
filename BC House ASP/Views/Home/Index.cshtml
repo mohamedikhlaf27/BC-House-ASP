@@ -158,11 +158,9 @@
     <script>
 
         function AllProducts() {
-          $('#product').load('@Url.Action("AllProducts", "Home")');
+          $('#product').load('@Url.Action("GetAllProducts", "Home")');
         }
-    </script>
-
-    <script>
+   
 
         function Filter(categorieValue) {
 
