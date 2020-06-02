@@ -11,8 +11,6 @@ namespace BC_House_ASP.Database
 {
     public class ProductDAL : Databasehandler, IProductDAL
     {
-        IProductDAL productDAL;
-
         public void SelectAllProducts()
         {
             cmd = new SqlCommand("Select * from Product", GetCon());
@@ -34,7 +32,7 @@ namespace BC_House_ASP.Database
             if (table.Rows.Count > 0)
             {
                 Product product;
-                ProductContainer productcontainer = new ProductContainer(productDAL);
+                ProductContainer productcontainer = new ProductContainer(new ProductDAL());
                 List<Product> productslist = productcontainer.GetList();
 
                 for (int i = 0; i < table.Rows.Count; i++)

@@ -15,15 +15,11 @@ namespace BC_House_ASP.Controllers
 {
     public class HomeController : Controller
     {
-        //private readonly ILogger<HomeController> _logger;
-
 
         ProductContainer productContainer;
         public HomeController()
         {
             productContainer = new ProductContainer(new ProductDAL());
-            //ILogger<HomeController> logger
-            //_logger = logger;
         }
 
         public IActionResult Index()
@@ -39,6 +35,7 @@ namespace BC_House_ASP.Controllers
             
             List<Product> productslist = productContainer.GetList();
 
+            ViewData["targetProduct"] = productslist;
             return PartialView("../Partials/_productDisplay", productslist);
         }
 
@@ -50,25 +47,18 @@ namespace BC_House_ASP.Controllers
             List<Product> productslist = productContainer.GetList();
             List<Product> newProductList = new List<Product>();
 
-            foreach(var product in productslist)
+           
+            foreach (var product in productslist)
             {
                 Product newProduct = new Product();
 
                 if(product.tag == categorie)
                 {
                     newProduct = product;
-                    newProductList.Add(newProduct);
+                    newProductList.Add(newProduct);                    
                 }
             }
             return PartialView("../Partials/_productDisplay", newProductList);
         }
-
-        //[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        //public IActionResult Error()
-        //{
-        //    return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        //}
-
-
     }
 }
