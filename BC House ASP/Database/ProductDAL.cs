@@ -34,7 +34,7 @@ namespace BC_House_ASP.Database
                 Product product;
                 ProductContainer productcontainer = new ProductContainer(new ProductDAL());
                 List<Product> productslist = productcontainer.GetList();
-
+                
                 for (int i = 0; i < table.Rows.Count; i++)
                 {
                     var dr = table.Rows[i];

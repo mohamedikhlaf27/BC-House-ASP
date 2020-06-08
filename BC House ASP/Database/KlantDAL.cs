@@ -63,8 +63,37 @@ namespace BC_House_ASP.Database
             }
         }
 
-        // register - gegevens in de databse toevoegen.
 
+        public Klant KlantLogin(Klant klant)
+        {
+            Klant newKlant = new Klant();
+
+            if (CheckPasswordByEmail(klant))
+            {
+                cmd = new SqlCommand("SELECT * FROM Customer WHERE Email = @email", GetCon());
+                cmd.Parameters.AddWithValue("email", klant.klantEmail);
+
+                OpenConnectionToDB();
+
+                dataReader = cmd.ExecuteReader();
+                while (dataReader.Read())
+                {
+                    newKlant.Id = Convert.ToInt32(dataReader["ID"]);
+                    newKlant.klantNaam = dataReader["Name"].ToString();
+                    newKlant.klantEmail = dataReader["Email"].ToString();
+                    newKlant.telefoonNummer = dataReader["Phone nr"].ToString();
+                    newKlant.straat = dataReader["Street"].ToString();
+                    newKlant.huisNummer = dataReader["House nr"].ToString();
+                    newKlant.postcode = dataReader["Postal code"].ToString();
+                    newKlant.woonplaats = dataReader["Residence"].ToString();
+                }
+                dataReader.Close();
+                CloseConnectionToDB();
+            }
+            return newKlant;
+        }
+
+        // register - gegevens in de databse toevoegen.
 
         public void AddKlant(Klant klant)
         {
@@ -85,6 +114,7 @@ namespace BC_House_ASP.Database
             cmd.ExecuteNonQuery();
             CloseConnectionToDB();
         }
+
     }
 }
 

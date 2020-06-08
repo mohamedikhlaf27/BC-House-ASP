@@ -11,6 +11,7 @@ namespace BC_House_ASP.Database
         /// </summary>
         public SqlConnectionStringBuilder builder { get; private set; }
         public SqlConnection con { get; private set; }
+        public SqlDataReader dataReader { get; set; }
         public DataTable table { get; private set; }
         public SqlCommand cmd;
         public Databasehandler()

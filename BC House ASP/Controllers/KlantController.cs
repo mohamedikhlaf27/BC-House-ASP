@@ -6,6 +6,7 @@ using BC_House_ASP.Container;
 using BC_House_ASP.Database;
 using BC_House_ASP.Interface;
 using BC_House_ASP.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BC_House_ASP.Controllers
@@ -37,20 +38,28 @@ namespace BC_House_ASP.Controllers
         {
             if (klant.klantEmail == null)
             {
-                ////Show error
-                //ModelState.AddModelError("klantEmail", "Vul je email in!");
                 return View("Login");
             }
             else if (klant.klantPassword == null)
             {
-                ////Show error
-                //ModelState.AddModelError("klantPassword", "Vul je wachtwoord in!");
                 return View("Login");
             }
             else if (klantContainer.CheckIfUserExists(klant))
             {
+                Klant currentKlant = new Klant();
+
+                currentKlant = klantContainer.LoginKlant(klant);
                 //Go to homepage
-                return RedirectToAction("Home");
+                HttpContext.Session.SetString("Id", currentKlant.Id.ToString());
+                HttpContext.Session.SetString("klantNaam", currentKlant.klantNaam);
+                HttpContext.Session.SetString("klantEmail", currentKlant.klantEmail);
+                HttpContext.Session.SetString("telefoonNummer", currentKlant.telefoonNummer);
+                HttpContext.Session.SetString("straat", currentKlant.straat);
+                HttpContext.Session.SetString("huisNummer", currentKlant.huisNummer);
+                HttpContext.Session.SetString("woonplaats", currentKlant.woonplaats);
+                HttpContext.Session.SetString("postcode", currentKlant.postcode);
+
+                return RedirectToAction("Home", currentKlant);
             }
             else
             {

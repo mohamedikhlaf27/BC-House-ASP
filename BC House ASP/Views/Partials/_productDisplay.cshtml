@@ -49,7 +49,7 @@
                     <td id="tbRowID">@Html.DisplayFor(modelItem => product.id)</td>
                     <td>@Html.DisplayFor(modelItem => product.productNaam)</td>
                     <td>@Html.DisplayFor(modelItem => product.omschrijving)</td>
-                    <td>@Html.DisplayFor(modelItem => product.prijs)</td>
+                    <td value="@product.prijs">€@Html.DisplayFor(modelItem => product.prijs)</td>
                     <th> <button onclick="selectedProduct()" type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#exampleModalCenter">+</button></th>
                 </tr>
             }
@@ -86,7 +86,7 @@ else
                 </div>
             </div>
             <div class="modal-footer justify-content-between">
-                <h5 id="productPrijs" value="5"></h5>
+                <h5 id="productPrijs"></h5>
                 <button type="button" class="btn" id="addbtn">Toevoegen</button>
             </div>
         </div>
@@ -94,17 +94,10 @@ else
 </div>
 
 <script>
-
- 
-
     $(document).ready(function () {
         $('#qty_input').prop('disabled', true);
         $('#plus-btn').click(function () {
             $('#qty_input').val(parseInt($('#qty_input').val()) + 1);
-
-            totaalprijs();
-           
-
         });
         $('#minus-btn').click(function () {
             $('#qty_input').val(parseInt($('#qty_input').val()) - 1);
@@ -113,9 +106,7 @@ else
                 $('#qty_input').val(1);
             }
         });
-    });
-
-    
+    });    
 </script>
 
 <script>
@@ -126,35 +117,20 @@ else
             var naam = currow.find('td:eq(1)').text();
             var prijs = currow.find('td:eq(3)').text();
             $('#productNaam').html(naam);
-            $('#productPrijs').html(prijs);
+            $('#productPrijs').html(prijs);     
         }) 
     }
 </script>
 
-<script>
+@*<script>
     function totaalprijs() {
 
-        //var prijs = document.getElementById('productPrijs');
-        
-
-        //var x = parseFloat(prijs.value);
-
-        //alert(x);
-        //document.getElementById("productPrijs").innerHTML = document.getElementById("qty_input").value * x;
-
-        var prijs = document.getElementById('productPrijs').value;
+        var prijs = parseFloat(document.getElementById('productPrijs').innerHTML).toFixed(2);
         var aantal = document.getElementById('qty_input').value;
-        prijs = document.getElementById('productPrijs').innerHTML;
 
-        
-        alert(prijs);
-        alert(aantal);
-
-        var s = document.getElementById('productPrijs').innerHTML = prijs * aantal;
-
-        alert(s);
+        var x = document.getElementById('productPrijs').innerHTML = aantal * prijs;
     }
-</script>
+</script>*@
 
 
 

@@ -68,5 +68,10 @@ namespace BC_House_ASP.Container
             }
             return true;
         }
+
+        public Klant LoginKlant(Klant klant)
+        {
+           return klantDAL.KlantLogin(klant);
+        }
     }
 }
