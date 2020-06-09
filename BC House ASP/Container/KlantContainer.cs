@@ -71,7 +71,7 @@ namespace BC_House_ASP.Container
 
         public Klant LoginKlant(Klant klant)
         {
-           return klantDAL.KlantLogin(klant);
+           return klantDAL.GetKlant(klant);
         }
     }
 }

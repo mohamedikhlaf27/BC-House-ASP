@@ -24,7 +24,7 @@ namespace BC_House_ASP
         {
             services.AddSession(options =>
             {
-                options.IdleTimeout = TimeSpan.FromDays(1);
+                options.IdleTimeout = TimeSpan.FromMinutes(120);
                 options.Cookie.HttpOnly = true;
                 options.Cookie.IsEssential = true; 
             });

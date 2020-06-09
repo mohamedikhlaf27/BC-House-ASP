@@ -2,9 +2,7 @@
 @using System.Data;
 @*@model List<BC_House_ASP.Models.Product>*@
 
-@{ 
-    var targetProduct = ViewData["targetProduct"] as BC_House_ASP.Models.Product;
-}
+
 
 @model IEnumerable<Product>;
 
@@ -26,7 +24,7 @@
         text-align: center;
     }
     #tbRowID{
-        display:none;
+        /*display:none;*/
     }
 </style>
 
@@ -36,6 +34,7 @@
     <table class="table">
         <thead id="TableHead">
             <tr>
+                <th></th>
                 <th>Product</th>
                 <th>Omschrijving</th>
                 <th>Prijs</th>
@@ -66,7 +65,8 @@ else
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="productNaam"></h5> 
+                <h5 class="modal-title" id="IdProduct"></h5> &nbsp; &nbsp;
+                <h5 class="modal-title" id="productNaam"></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -87,7 +87,7 @@ else
             </div>
             <div class="modal-footer justify-content-between">
                 <h5 id="productPrijs"></h5>
-                <button type="button" class="btn" id="addbtn">Toevoegen</button>
+                <button onclick="Addtocard()" type="button" class="btn" id="addbtn">Toevoegen</button>
             </div>
         </div>
     </div>
@@ -114,23 +114,39 @@ else
     function selectedProduct() {
         $('.table tbody').on('click', '.btn', function () {
             var currow = $(this).closest('tr');
+            var id = currow.find('td:eq(0)').text();
             var naam = currow.find('td:eq(1)').text();
             var prijs = currow.find('td:eq(3)').text();
+            $('#IdProduct').html(id);
             $('#productNaam').html(naam);
             $('#productPrijs').html(prijs);     
         }) 
     }
+
+    function Addtocard() {
+        var productID = document.getElementById('IdProduct').innerText;
+        var aantal = document.getElementById('qty_input').value;
+     
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("AddToCard", "Winkelwagen")',
+            data: "productID="+ productID, "Quintity="+ aantal,
+        }).done(function (result) {
+            $('#cart').html(result);
+        }).fail(function () {
+            console.log('fail');
+        });
+
+        //Swal.fire({
+        //    icon: 'success',
+        //    title: 'Product toegevoegd',
+        //    showConfirmButton: false,
+        //    timer: 1500
+        //})
+    }
 </script>
 
-@*<script>
-    function totaalprijs() {
 
-        var prijs = parseFloat(document.getElementById('productPrijs').innerHTML).toFixed(2);
-        var aantal = document.getElementById('qty_input').value;
-
-        var x = document.getElementById('productPrijs').innerHTML = aantal * prijs;
-    }
-</script>*@
 
 
 

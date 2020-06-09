@@ -64,7 +64,7 @@ namespace BC_House_ASP.Database
         }
 
 
-        public Klant KlantLogin(Klant klant)
+        public Klant GetKlant(Klant klant)
         {
             Klant newKlant = new Klant();
 

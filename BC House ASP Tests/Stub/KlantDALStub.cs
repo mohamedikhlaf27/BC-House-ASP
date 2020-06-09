@@ -37,5 +37,15 @@ namespace BC_House_ASP_Tests.Stub
             }
             return ExistReturnValue.Value;
         }
+
+        public Klant GetKlant(Klant klant)
+        {
+            klant.Id = 12;
+            if (ExistReturnValue == null)
+            {
+                throw new NullReferenceException("Invalid use of stub code. First set field ExistsReturnValue");
+            }
+            return klant;
+        }
     }
 }

@@ -15,7 +15,6 @@ namespace BC_House_ASP_Tests.KlantTests
         {
             // arrange
             var klantDalStub = new KlantDALStub();
-            //var klantdal = new KlantDAL();
             Klant klant = new Klant();
             klantDalStub.ExistReturnValue = true;
 
@@ -89,6 +88,38 @@ namespace BC_House_ASP_Tests.KlantTests
             // assert
             Assert.True(result);
 
+        }
+
+        [Fact]
+        public void Check_If_Get_LoginKlant()
+        {
+            // arrange
+            var klantDalStub = new KlantDALStub();
+            var klantContainer = new KlantContainer(klantDalStub);
+            Klant klant = new Klant();
+            klantDalStub.ExistReturnValue = true;
+            
+
+            // act 
+            var result = klantContainer.LoginKlant(klant);
+            
+            // assert
+            Assert.Equal(12, result.Id);
+        }
+
+        [Fact]
+        public void Check_If_Get_GetKlant()
+        {
+            // arrange
+            var klantDalStub = new KlantDALStub();
+            Klant klant = new Klant();
+            klantDalStub.ExistReturnValue = true;
+
+            // act 
+            var result = klantDalStub.GetKlant(klant);
+           
+            // assert
+            Assert.Equal(klant, result);
         }
     }
 }

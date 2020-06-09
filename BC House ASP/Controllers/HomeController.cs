@@ -17,16 +17,15 @@ namespace BC_House_ASP.Controllers
     {
 
         ProductContainer productContainer;
-        WinkelwagenContainer winkelwagenContainer;
+
         public HomeController()
         {
             productContainer = new ProductContainer(new ProductDAL());
-            winkelwagenContainer = new WinkelwagenContainer();
+
         }
 
         public IActionResult Index()
         {
-            ViewBag.Naam = HttpContext.Session.GetString("klantNaam");
             return View();
         }
 
@@ -63,14 +62,6 @@ namespace BC_House_ASP.Controllers
                 }
             }
             return PartialView("../Partials/_productDisplay", newProductList);
-        }
-
-      
-        public void AddToCard(int productID)
-        {
-            List<Product> winkelwagenList = winkelwagenContainer.GetList();
-
-            Product product = new Product();
-        }
+        } 
     }
 }

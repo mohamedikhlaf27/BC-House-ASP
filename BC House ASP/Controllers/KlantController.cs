@@ -49,7 +49,7 @@ namespace BC_House_ASP.Controllers
                 Klant currentKlant = new Klant();
 
                 currentKlant = klantContainer.LoginKlant(klant);
-                //Go to homepage
+              
                 HttpContext.Session.SetString("Id", currentKlant.Id.ToString());
                 HttpContext.Session.SetString("klantNaam", currentKlant.klantNaam);
                 HttpContext.Session.SetString("klantEmail", currentKlant.klantEmail);
@@ -59,6 +59,7 @@ namespace BC_House_ASP.Controllers
                 HttpContext.Session.SetString("woonplaats", currentKlant.woonplaats);
                 HttpContext.Session.SetString("postcode", currentKlant.postcode);
 
+                //Go to homepage
                 return RedirectToAction("Home", currentKlant);
             }
             else
@@ -71,7 +72,8 @@ namespace BC_House_ASP.Controllers
         [HttpPost]
         public ActionResult Register(Klant klant)
         {
-            if (klant.klantNaam == null || klant.klantEmail == null || klant.telefoonNummer == null || klant.klantPassword == null || klant.postcode == null || klant.huisNummer == null || klant.straat == null || klant.woonplaats == null)
+            if (klant.klantNaam == null || klant.klantEmail == null || klant.telefoonNummer == null || klant.klantPassword == null || 
+                klant.postcode == null || klant.huisNummer == null || klant.straat == null || klant.woonplaats == null)
             {
                 ModelState.AddModelError("klantEmail", "Vul alle gegevens in!");
                 return View("Register");

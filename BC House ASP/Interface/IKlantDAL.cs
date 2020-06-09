@@ -11,6 +11,6 @@ namespace BC_House_ASP.Interface
         void AddKlant(Klant klant);
         bool CheckPasswordByEmail(Klant klant);
         bool CheckEmailExistance(Klant klant);
-        public Klant KlantLogin(Klant klant);
+        public Klant GetKlant(Klant klant);
     }
 }
