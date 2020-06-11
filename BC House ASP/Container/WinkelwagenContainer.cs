@@ -22,58 +22,62 @@ namespace BC_House_ASP.Container
         }
 
         //product toevoegen aan winkelwagen.
-        public void AddProductToCart(int productID, int Quantity)
+        public void AddProductToCart(Product product, Winkelwagen winkelwagen)
         {
             var winkelwagenList = GetList();
-            Winkelwagen newProduct = new Winkelwagen(productID);
-
+            Winkelwagen newProduct = new Winkelwagen(product.id);
+            
             //check als product al in de winkewagen zit wordt de hoeveelheid opgeteld.
             if (winkelwagenList.Contains(newProduct))
             {
-                foreach (Winkelwagen product in winkelwagenList)
+                foreach (Winkelwagen products in winkelwagenList)
                 {
-                    if (product.Equals(newProduct))
+                    if (products.Equals(newProduct))
                     {
-                        product.hoeveelheid++;
+                        products.hoeveelheid++;
                         return;
                     }
                 }
             }
             else
             {
-                newProduct.hoeveelheid = Quantity;
+                newProduct.Prod.id = winkelwagen.Prod.id;
+                newProduct.Prod.productNaam = winkelwagen.Prod.productNaam;
+                newProduct.hoeveelheid = winkelwagen.hoeveelheid;
+                newProduct.Prod.prijs = winkelwagen.Prod.prijs;
                 winkelwagenList.Add(newProduct);
             }
         }
 
         //Hoeveheid bepalen
-        public void SetProductQuantity(int productID, int Quantity)
+        public void SetProductQuantity(Product product, Winkelwagen winkelwagen)
         {
             // als de hoevelheid nul is verwijder de product.
-            if(Quantity == 0)
+            if (winkelwagen.hoeveelheid == 0)
             {
-                RevomeProduct(productID);
+                RevomeProduct(winkelwagen);
                 return;
             }
 
-            Winkelwagen updatedProduct = new Winkelwagen(productID);
+            Winkelwagen updatedProduct = new Winkelwagen(product.id);
             var winkelwagenList = GetList();
 
             // update de hoeveelheid van een product in de list
-            foreach (Winkelwagen product in winkelwagenList)
+            foreach (Winkelwagen products in winkelwagenList)
             {
-                if (product.Equals(updatedProduct))
+                if (products.Equals(updatedProduct))
                 {
-                    product.hoeveelheid = Quantity;
+                    products.hoeveelheid = winkelwagen.hoeveelheid;
                     return;
                 }
             }
         }
 
         // product verwijderen.
-        public void RevomeProduct(int productID)
+        public void RevomeProduct(Winkelwagen product)
         {
-            Winkelwagen removedProduct = new Winkelwagen(productID);
+            Product product1 = new Product();
+            Winkelwagen removedProduct = new Winkelwagen(product1.id);
             var winkelwagenList = GetList();
 
             winkelwagenList.Remove(removedProduct);

@@ -48,7 +48,7 @@
                     <td id="tbRowID">@Html.DisplayFor(modelItem => product.id)</td>
                     <td>@Html.DisplayFor(modelItem => product.productNaam)</td>
                     <td>@Html.DisplayFor(modelItem => product.omschrijving)</td>
-                    <td value="@product.prijs">€@Html.DisplayFor(modelItem => product.prijs)</td>
+                    <td value="@product.prijs">@*€*@@Html.DisplayFor(modelItem => product.prijs)</td>
                     <th> <button onclick="selectedProduct()" type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#exampleModalCenter">+</button></th>
                 </tr>
             }
@@ -125,6 +125,8 @@ else
 
     function Addtocard() {
         var ID = document.getElementById('IdProduct').innerText;
+        var Naam = document.getElementById('productNaam').innerText;
+        var Prijs = document.getElementById('productPrijs').innerText;
         var aantal = document.getElementById('qty_input').value;
 
         $.ajax({
@@ -133,6 +135,8 @@ else
             data: {
                 "productID": + ID,
                 "Quantity": + aantal,
+                "productNaam": Naam,
+                "prijs": Prijs,
             },
             dataType: 'json',  
         }).done(function (result) {

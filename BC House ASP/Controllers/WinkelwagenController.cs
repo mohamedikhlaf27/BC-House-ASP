@@ -31,20 +31,31 @@ namespace BC_House_ASP.Controllers
 
         [HttpPost]
         // Producten toevoegen aan winkelwagen
-        public void AddToCard(int productID, int Quantity)
+        public void AddToCard (int productID, int Quantity, string productNaam, double prijs)
         {
-            SetQuantity(productID, Quantity);
-            winkelwagenContainer.AddProductToCart(productID, Quantity);
+            Product product = new Product();
+            Winkelwagen winkelwagen = new Winkelwagen(product.id);
+            winkelwagen.Prod.id = productID;
+            winkelwagen.hoeveelheid = Quantity;
+            winkelwagen.Prod.productNaam = productNaam;
+            winkelwagen.Prod.prijs = prijs;
+
+            SetQuantity(product, winkelwagen);
+            winkelwagenContainer.AddProductToCart(product, winkelwagen);
         }
 
-        public void SetQuantity(int productID, int Quantity)
+        public void SetQuantity(Product productID, Winkelwagen Quantity)
         {
             winkelwagenContainer.SetProductQuantity(productID, Quantity);
         }
 
+        [HttpPost]
         public void ProductRemove(int productID)
         {
-            winkelwagenContainer.RevomeProduct(productID);
+            Product product = new Product();
+            Winkelwagen winkelwagen = new Winkelwagen(product.id);
+            winkelwagen.Prod.id = productID;
+            winkelwagenContainer.RevomeProduct(winkelwagen);
         }
     }
 }

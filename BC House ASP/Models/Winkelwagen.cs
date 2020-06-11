@@ -47,10 +47,11 @@ namespace BC_House_ASP.Models
             this.ProductId = productID;
         }
 
-        public double Price
-        {
-            get { return Prod.prijs; }
-        }
+        //public double Price
+        //{
+        //    get { return Prod.prijs; }
+        //}
+        public double Price { get; set; }
 
         public double TotalPrice
         {

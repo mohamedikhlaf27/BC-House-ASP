@@ -22,23 +22,23 @@
                             <tr>
                                 <th scope="col"> </th>
                                 <th scope="col">Product</th>
-                                <th scope="col" class="text-center">Quantity</th>
-                                <th scope="col" class="text-right">Price</th>
+                                <th scope="col" class="text-center">Aantal</th>
+                                <th scope="col" class="text-right">Prijs</th>
                                 <th> </th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach (var product in Model)
                             {
-                                <tr>
-                                    <td> </td>
-                                    <td>@product.productNaam</td>
-                                    <td><input class="form-control" type="text" value="@product.hoeveelheid" /></td>
-                                    <td class="text-right">€@product.Price</td>
-                                    <td class="text-right"><button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> </button> </td>
-                                </tr>
+                            <tr id="tableRow">
+                                <td id="ID" value="@Html.DisplayFor(modelItem => product.Prod.id)">@product.Prod.id</td>
+                                <td>@Html.DisplayFor(modelItem => product.Prod.productNaam)</td>
+                                <td class="text-center" type="text"> @product.hoeveelheid</td>
+                                <td class="text-right">€@Html.DisplayFor(modelItem => product.Prod.prijs)</td>
+                                <td class="text-right"><button onclick="DeleteItem()" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> </button> </td>
+                            </tr>
                             }
-                                <tr>
+                                @*<tr>
                                     <td></td>
                                     <td></td>
                                     <td></td>
@@ -51,7 +51,7 @@
                                     <td></td>
                                     <td>Shipping</td>
                                     <td class="text-right">2,00 €</td>
-                                </tr>
+                                </tr>*@
                                 <tr>
                                     <td></td>
                                     <td></td>
@@ -82,3 +82,22 @@ else
 {
     <h3>Winkelwagen is leeg. Voeg producten toe.</h3>
 }
+
+<script>
+    function DeleteItem() {
+
+        var productID = document.getElementById('ID').innerHTML;
+        alert(productID);
+
+         $.ajax({
+            type: "POST",
+            url: '@Url.Action("ProductRemove", "Winkelwagen")',
+             data: "productID=" + productID,
+            dataType: 'json',
+        }).done(function (result) {
+            $('#tableRow').html(result);
+        }).fail(function () {
+            console.log('fail');
+        });
+    }
+</script>
