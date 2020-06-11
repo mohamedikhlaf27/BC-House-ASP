@@ -33,16 +33,17 @@
                                 <tr>
                                     <td> </td>
                                     <td>@product.productNaam</td>
-                                    <td><input class="form-control" type="text" value="1" /></td>
+                                    <td><input class="form-control" type="text" value="@product.hoeveelheid" /></td>
                                     <td class="text-right">€@product.Price</td>
                                     <td class="text-right"><button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> </button> </td>
                                 </tr>
+                            }
                                 <tr>
                                     <td></td>
                                     <td></td>
                                     <td></td>
                                     <td>Sub-Total</td>
-                                    <td class="text-right">€@product.TotalPrice</td>
+                                    <td class="text-right">TotalPrice</td>
                                 </tr>
                                 <tr>
                                     <td></td>
@@ -58,8 +59,6 @@
                                     <td><strong>Total</strong></td>
                                     <td class="text-right"><strong>346,90 €</strong></td>
                                 </tr>
-                            }
-
                         </tbody>
                     </table>
                 </div>

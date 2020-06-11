@@ -124,25 +124,29 @@ else
     }
 
     function Addtocard() {
-        var productID = document.getElementById('IdProduct').innerText;
+        var ID = document.getElementById('IdProduct').innerText;
         var aantal = document.getElementById('qty_input').value;
-     
+
         $.ajax({
             type: "POST",
             url: '@Url.Action("AddToCard", "Winkelwagen")',
-            data: "productID="+ productID, "Quintity="+ aantal,
+            data: {
+                "productID": + ID,
+                "Quantity": + aantal,
+            },
+            dataType: 'json',  
         }).done(function (result) {
             $('#cart').html(result);
         }).fail(function () {
             console.log('fail');
         });
 
-        //Swal.fire({
-        //    icon: 'success',
-        //    title: 'Product toegevoegd',
-        //    showConfirmButton: false,
-        //    timer: 1500
-        //})
+        Swal.fire({
+            icon: 'success',
+            title: 'Product toegevoegd',
+            showConfirmButton: false,
+            timer: 1500
+        })
     }
 </script>
 

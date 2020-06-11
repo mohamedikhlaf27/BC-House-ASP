@@ -8,7 +8,7 @@ namespace BC_House_ASP.Container
 {
     public class WinkelwagenContainer
     {
-        public List<Winkelwagen> WinkelwagenList { get; set; } = new List<Winkelwagen>();
+        public static List<Winkelwagen> WinkelwagenList { get; set; } = new List<Winkelwagen>();
 
         public List<Winkelwagen> GetList()
         {
@@ -22,7 +22,7 @@ namespace BC_House_ASP.Container
         }
 
         //product toevoegen aan winkelwagen.
-        public void AddProductToCart(int productID)
+        public void AddProductToCart(int productID, int Quantity)
         {
             var winkelwagenList = GetList();
             Winkelwagen newProduct = new Winkelwagen(productID);
@@ -41,7 +41,7 @@ namespace BC_House_ASP.Container
             }
             else
             {
-                newProduct.hoeveelheid = 1;
+                newProduct.hoeveelheid = Quantity;
                 winkelwagenList.Add(newProduct);
             }
         }
@@ -49,7 +49,7 @@ namespace BC_House_ASP.Container
         //Hoeveheid bepalen
         public void SetProductQuantity(int productID, int Quantity)
         {
-            // als de hoevelheid nu is verwijder de product.
+            // als de hoevelheid nul is verwijder de product.
             if(Quantity == 0)
             {
                 RevomeProduct(productID);
@@ -59,7 +59,7 @@ namespace BC_House_ASP.Container
             Winkelwagen updatedProduct = new Winkelwagen(productID);
             var winkelwagenList = GetList();
 
-            // update de hoeveelheid van een product un de list
+            // update de hoeveelheid van een product in de list
             foreach (Winkelwagen product in winkelwagenList)
             {
                 if (product.Equals(updatedProduct))

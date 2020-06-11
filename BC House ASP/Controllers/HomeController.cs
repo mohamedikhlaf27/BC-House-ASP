@@ -36,14 +36,12 @@ namespace BC_House_ASP.Controllers
             productContainer.AllProducts();
             
             List<Product> productslist = productContainer.GetList();
-
-            ViewData["targetProduct"] = productslist;
      
             return PartialView("../Partials/_productDisplay", productslist);
         }
 
         [HttpPost]
-        public ActionResult FilterProducts(string categorie, Product prod)
+        public ActionResult FilterProducts(string categorie)
         {
             productContainer.ClearList();
             productContainer.AllProducts();
