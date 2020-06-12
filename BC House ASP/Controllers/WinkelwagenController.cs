@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using BC_House_ASP.Container;
+using BC_House_ASP.Database;
 using BC_House_ASP.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -14,7 +15,7 @@ namespace BC_House_ASP.Controllers
 
         public WinkelwagenController()
         {
-            winkelwagenContainer = new WinkelwagenContainer();
+            winkelwagenContainer = new WinkelwagenContainer(new WinkelwagenDAL());
         }
 
         public IActionResult Winkelwagen()
@@ -31,14 +32,12 @@ namespace BC_House_ASP.Controllers
 
         [HttpPost]
         // Producten toevoegen aan winkelwagen
-        public void AddToCard (int productID, int Quantity, string productNaam, double prijs)
+        public void AddToCard (int productID, int Quantity)
         {
             Product product = new Product();
             Winkelwagen winkelwagen = new Winkelwagen(product.id);
             winkelwagen.Prod.id = productID;
             winkelwagen.hoeveelheid = Quantity;
-            winkelwagen.Prod.productNaam = productNaam;
-            winkelwagen.Prod.prijs = prijs;
 
             SetQuantity(product, winkelwagen);
             winkelwagenContainer.AddProductToCart(product, winkelwagen);

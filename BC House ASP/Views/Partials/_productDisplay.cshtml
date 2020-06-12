@@ -1,9 +1,4 @@
-﻿@using Microsoft.AspNetCore.Http;
-@using System.Data;
-@*@model List<BC_House_ASP.Models.Product>*@
-
-
-
+﻿
 @model IEnumerable<Product>;
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
@@ -22,9 +17,6 @@
 
     input {
         text-align: center;
-    }
-    #tbRowID{
-        /*display:none;*/
     }
 </style>
 
@@ -45,7 +37,7 @@
             @foreach (var product in Model)
             {
                 <tr id="Tablerow">
-                    <td id="tbRowID">@Html.DisplayFor(modelItem => product.id)</td>
+                    <td>@Html.DisplayFor(modelItem => product.id)</td>
                     <td>@Html.DisplayFor(modelItem => product.productNaam)</td>
                     <td>@Html.DisplayFor(modelItem => product.omschrijving)</td>
                     <td value="@product.prijs">@*€*@@Html.DisplayFor(modelItem => product.prijs)</td>
@@ -125,8 +117,6 @@ else
 
     function Addtocard() {
         var ID = document.getElementById('IdProduct').innerText;
-        var Naam = document.getElementById('productNaam').innerText;
-        var Prijs = document.getElementById('productPrijs').innerText;
         var aantal = document.getElementById('qty_input').value;
 
         $.ajax({
@@ -135,8 +125,6 @@ else
             data: {
                 "productID": + ID,
                 "Quantity": + aantal,
-                "productNaam": Naam,
-                "prijs": Prijs,
             },
             dataType: 'json',  
         }).done(function (result) {

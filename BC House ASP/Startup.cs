@@ -54,7 +54,7 @@ namespace BC_House_ASP
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Klant}/{action=Login}/{id?}");
             });
         }
     }

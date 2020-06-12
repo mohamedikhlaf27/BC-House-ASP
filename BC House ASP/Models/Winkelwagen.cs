@@ -11,7 +11,6 @@ namespace BC_House_ASP.Models
     {
         [Key]
         public int id { get; set; }
-        public string productNaam { get; set; }
         public bool status { get; set; }
         public DateTime bestellingDatum { get; set; }
         public int hoeveelheid { get; set; }
@@ -47,10 +46,6 @@ namespace BC_House_ASP.Models
             this.ProductId = productID;
         }
 
-        //public double Price
-        //{
-        //    get { return Prod.prijs; }
-        //}
         public double Price { get; set; }
 
         public double TotalPrice

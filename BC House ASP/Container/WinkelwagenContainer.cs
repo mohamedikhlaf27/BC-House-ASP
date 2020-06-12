@@ -1,4 +1,5 @@
-﻿using BC_House_ASP.Models;
+﻿using BC_House_ASP.Interface;
+using BC_House_ASP.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +9,12 @@ namespace BC_House_ASP.Container
 {
     public class WinkelwagenContainer
     {
+        IWinkelwagen WinkelwagenDAL;
+
+        public WinkelwagenContainer(IWinkelwagen winkelwagenDAL)
+        {
+            this.WinkelwagenDAL = winkelwagenDAL;
+        }
         public static List<Winkelwagen> WinkelwagenList { get; set; } = new List<Winkelwagen>();
 
         public List<Winkelwagen> GetList()
@@ -41,10 +48,15 @@ namespace BC_House_ASP.Container
             }
             else
             {
-                newProduct.Prod.id = winkelwagen.Prod.id;
-                newProduct.Prod.productNaam = winkelwagen.Prod.productNaam;
+                var Productdetails = WinkelwagenDAL.Getproduct(winkelwagen.Prod.id);
+                newProduct.Prod.id = Productdetails.Prod.id;
+                newProduct.Prod.productNaam = Productdetails.Prod.productNaam;
+                newProduct.Prod.omschrijving = Productdetails.Prod.omschrijving;
+                newProduct.Prod.tag = Productdetails.Prod.tag;
+                newProduct.Prod.prijs = Productdetails.Prod.prijs;
+
                 newProduct.hoeveelheid = winkelwagen.hoeveelheid;
-                newProduct.Prod.prijs = winkelwagen.Prod.prijs;
+
                 winkelwagenList.Add(newProduct);
             }
         }
@@ -60,12 +72,13 @@ namespace BC_House_ASP.Container
             }
 
             Winkelwagen updatedProduct = new Winkelwagen(product.id);
+            updatedProduct.hoeveelheid = winkelwagen.hoeveelheid;
             var winkelwagenList = GetList();
 
             // update de hoeveelheid van een product in de list
             foreach (Winkelwagen products in winkelwagenList)
             {
-                if (products.Equals(updatedProduct))
+                if (products.hoeveelheid.Equals(updatedProduct.hoeveelheid))
                 {
                     products.hoeveelheid = winkelwagen.hoeveelheid;
                     return;
@@ -76,12 +89,13 @@ namespace BC_House_ASP.Container
         // product verwijderen.
         public void RevomeProduct(Winkelwagen product)
         {
-            Product product1 = new Product();
-            Winkelwagen removedProduct = new Winkelwagen(product1.id);
+
             var winkelwagenList = GetList();
 
-            winkelwagenList.Remove(removedProduct);
+            winkelwagenList.Remove(product);
         }
+
+
         // Totale Prijs
         public double TotalPrice()
         {
