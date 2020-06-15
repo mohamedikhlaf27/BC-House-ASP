@@ -35,7 +35,7 @@
                                 <td>@Html.DisplayFor(modelItem => product.Prod.productNaam)</td>
                                 <td class="text-center" type="text"> @product.hoeveelheid</td>
                                 <td class="text-right">€@Html.DisplayFor(modelItem => product.Prod.prijs)</td>
-                                <td class="text-right"><button onclick="DeleteItem()" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> </button> </td>
+                                <td class="text-right"><button onclick="DeleteItem(), refreshPage()"   class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> </button> </td>
                             </tr>
                             }
                                 <tr>
@@ -50,7 +50,7 @@
                                     <td></td>
                                     <td></td>
                                     <td><strong>Total</strong></td>
-                                    <td class="text-right"><strong>346,90 €</strong></td>
+                                    <td class="text-right"><strong>2,00 €</strong></td>
                                 </tr>
                         </tbody>
                     </table>
@@ -95,5 +95,9 @@ else
         }).fail(function () {
             console.log('fail');
         });
+    }
+
+    function refreshPage() {
+        window.location.reload();
     }
 </script>

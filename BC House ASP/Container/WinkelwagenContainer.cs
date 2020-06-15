@@ -90,9 +90,15 @@ namespace BC_House_ASP.Container
         public void RemoveProduct(Winkelwagen product)
         {
 
-            var winkelwagenList = GetList();
-
-            winkelwagenList.Remove(product);
+            List<Winkelwagen> winkelwagenList = GetList();
+            foreach (Winkelwagen item in winkelwagenList.ToList())
+            {
+                if (product.Prod.id == item.Prod.id)
+                {
+                    winkelwagenList.Remove(item);
+                }
+            }
+        
         }
 
         // Totale Prijs
