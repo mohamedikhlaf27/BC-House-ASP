@@ -40,29 +40,28 @@ namespace BC_House_ASP.Container
             return true;
         }
 
-
         public void Accountmaken(Klant klant)
         {
             klantDAL.AddKlant(klant);
         }
 
         // check of het in gevulde klopt
-        public bool registerCheck(string klantEmail, string klantPassword, string telefoonNummer, string postcode)
+        public bool registerCheck(Klant klant)
         {
             validatie = new Validatie();
-            if (!validatie.ValidatieEmail(klantEmail))
+            if (!validatie.ValidatieEmail(klant.klantEmail))
             {
                 return false;
             }
-            else if (!validatie.ValidatieWachtwoord(klantPassword))
+            else if (!validatie.ValidatieWachtwoord(klant.klantPassword))
             {
                 return false;
             }
-            else if (!validatie.ValidatieTelefoonNR(telefoonNummer))
+            else if (!validatie.ValidatieTelefoonNR(klant.telefoonNummer))
             {
                 return false;
             }
-            else if (!validatie.ValidatiePostcode(postcode))
+            else if (!validatie.ValidatiePostcode(klant.postcode))
             {
                 return false;
             }

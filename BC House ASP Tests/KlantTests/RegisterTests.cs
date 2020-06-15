@@ -52,8 +52,13 @@ namespace BC_House_ASP_Tests.KlantTests
 
             klantDalStub.ExistReturnValue = true;
 
+            Klant klant = new Klant();
+            klant.klantEmail = "test@live.com";
+            klant.klantPassword = "Welkom12345";
+            klant.telefoonNummer = "0612345678";
+            klant.postcode = "5213AS";
             // act 
-            var result = klantContainer.registerCheck("test@live.com", "Welkom12345", "0612345678", "5213AS");
+            var result = klantContainer.registerCheck(klant);
 
             // assert
             Assert.True(result);

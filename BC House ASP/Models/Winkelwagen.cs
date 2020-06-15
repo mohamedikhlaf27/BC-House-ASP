@@ -10,7 +10,7 @@ namespace BC_House_ASP.Models
     public class Winkelwagen
     {
         [Key]
-        public int id { get; set; }
+        public int ID { get; set; }
         public bool status { get; set; }
         public DateTime bestellingDatum { get; set; }
         public int hoeveelheid { get; set; }
@@ -46,11 +46,11 @@ namespace BC_House_ASP.Models
             this.ProductId = productID;
         }
 
-        public double Price { get; set; }
+        public double prijs { get; set; }
 
         public double TotalPrice
         {
-            get { return Price * hoeveelheid; }
+            get { return prijs * hoeveelheid; }
         }
 
         //public bool Equals(Winkelwagen item)

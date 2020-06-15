@@ -67,7 +67,7 @@ namespace BC_House_ASP.Container
             // als de hoevelheid nul is verwijder de product.
             if (winkelwagen.hoeveelheid == 0)
             {
-                RevomeProduct(winkelwagen);
+                RemoveProduct(winkelwagen);
                 return;
             }
 
@@ -87,14 +87,13 @@ namespace BC_House_ASP.Container
         }
 
         // product verwijderen.
-        public void RevomeProduct(Winkelwagen product)
+        public void RemoveProduct(Winkelwagen product)
         {
 
             var winkelwagenList = GetList();
 
             winkelwagenList.Remove(product);
         }
-
 
         // Totale Prijs
         public double TotalPrice()

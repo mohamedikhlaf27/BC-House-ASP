@@ -78,7 +78,7 @@ namespace BC_House_ASP.Controllers
                 ModelState.AddModelError("klantEmail", "Vul alle gegevens in!");
                 return View("Register");
             }
-            else if (klantContainer.registerCheck(klant.klantEmail, klant.klantPassword, klant.telefoonNummer, klant.postcode))
+            else if (klantContainer.registerCheck(klant))
             {
                 klantContainer.Accountmaken(klant);
                 return RedirectToAction("Login");

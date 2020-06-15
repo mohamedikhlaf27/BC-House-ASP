@@ -54,7 +54,7 @@ namespace BC_House_ASP.Controllers
             Product product = new Product();
             Winkelwagen winkelwagen = new Winkelwagen(product.id);
             winkelwagen.Prod.id = productID;
-            winkelwagenContainer.RevomeProduct(winkelwagen);
+            winkelwagenContainer.RemoveProduct(winkelwagen);
         }
     }
 }

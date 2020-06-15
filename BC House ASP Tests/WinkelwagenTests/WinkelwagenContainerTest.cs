@@ -152,7 +152,7 @@ namespace BC_House_ASP_Tests.WinkelwagenTests
             winkelwagenList.Add(product1);
             winkelwagenList.Add(product2);
 
-            winkelwagenContainer.RevomeProduct(product2);
+            winkelwagenContainer.RemoveProduct(product2);
 
             var result = winkelwagenList.Count();
             var expected = 1;
